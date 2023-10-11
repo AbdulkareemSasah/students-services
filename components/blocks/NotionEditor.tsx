@@ -181,7 +181,7 @@ export default function NotionEditor({value, onChangeValue}:NotionEditorProps ) 
             // @ts-ignore
             ref.current = editor
         }
-    },[value, ref,EDITOR_JS_TOOLS]);
+    },[value, ref]);
 
 
 

@@ -20,10 +20,10 @@ export async function getCategories() {
                 },
             }
         })
-        const formatData = data.map(item => {
+        const formatData = data.map((item:any) => {
             const formattedItem: ItemType = {};
 
-            item.translations.forEach(translation => {
+            item.translations.forEach((translation:any) => {
                 formattedItem[translation.lang] = {
                     name: translation.name,
                     id: item.id,
