@@ -156,8 +156,6 @@ export default async function GlobalPage()  {
                 />
             </TabsContent>
         </Tabs>
-            
         </div>
-        
     )
 }
