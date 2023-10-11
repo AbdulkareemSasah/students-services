@@ -29,12 +29,12 @@ const GlobalPage = async () => {
             dropdownGroups:true,
             dropdownItems:true,
         }
-    })
+    }) || []
     const pages= await prisma?.page.findMany({
         include:{
             translations:true
         }
-    })
+    }) || []
     const dropdownGroups= await prisma?.dropDownGroup.findMany({
         include:{
             translations:true,
@@ -44,30 +44,30 @@ const GlobalPage = async () => {
                 }
             }
         }
-    })
+    }) || []
     const articles= await prisma?.article.findMany({
         include:{
             translations:true
         }
-    })
+    }) || []
     const dropdownItems= await prisma?.dropdownItem.findMany({
         include:{
             translations:true,
         }
-    })
+    }) || []
     const groupFooters = await prisma?.groupFooter.findMany({
         include: {
             translations:true,
             articles:true,
             pages:true
         }
-    })
+    }) || []
     // (await (await fetch('/api/language')).json())
     let global :any= await prisma?.global.findFirst({
         include :{    
             translations: true
         }
-    });
+    }) || {};
     if (!global) {
         global  = await prisma?.global.create({
             data: {
