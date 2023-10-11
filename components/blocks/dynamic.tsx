@@ -58,18 +58,21 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                         </CardHeader>
                             <CardContent className={"w-full"}>
                                 {f === "notion editor" &&
-                                    <NotionEditor
-                                        value={field?.value[index]?.content ? JSON.parse(field.value?.[index]?.content) : ""}
-                                        onChangeValue={newValue => {
-                                            field.value[index] = {
-                                                type : "notion editor",
-                                                content: newValue
-                                            }
-                                        }}
-                                    />
+                                    <> 
+                                    {/* // <NotionEditor
+                                    //     value={field?.value[index]?.content ? JSON.parse(field.value?.[index]?.content) : ""}
+                                    //     onChangeValue={newValue => {
+                                    //         field.value[index] = {
+                                    //             type : "notion editor",
+                                    //             content: newValue
+                                    //         }
+                                    //     }}
+                                    // /> */}
+                                    </>
                                 }
                                 {f === "quill text editor" &&
-                                    <QuillEditor
+                                <>
+                                {/* <QuillEditor
                                         name={"editor"+index}
                                         value={field?.value[index]?.content ? field?.value[index]?.content : ""}
                                         onChange={newValue => {
@@ -78,7 +81,9 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                                                 content: newValue
                                             }
                                         }}
-                                    />
+                                    /> */}
+                                </>
+                                    
                                 }
                             </CardContent>
                     </Card>
