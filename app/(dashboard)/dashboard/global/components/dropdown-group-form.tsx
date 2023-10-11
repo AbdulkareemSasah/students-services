@@ -99,7 +99,7 @@ const DropdownGroupForm = ({initialData , dropdownItems, navbarItems}:DropdownGr
     const router = useRouter()
     const name = "dropdownGroup"
     const head = {
-        title: initialData ? initialData.translations.find(t => t.lang === selectedLang)?.name :t(`${name}.create.title`),
+        title: initialData ? initialData.translations.find((t:any) => t.lang === selectedLang)?.name :t(`${name}.create.title`),
         description : t(`${name}.create.description`),
     };
     const title = initialData ? t(`${name}.edit.title`) :t(`${name}.create.title`);
@@ -224,7 +224,7 @@ const DropdownGroupForm = ({initialData , dropdownItems, navbarItems}:DropdownGr
                                             <FormControl>
                                                 <Input disabled={loading} {...register(`translations.${l.language}.name`)} />
                                             </FormControl>
-                                            {errors.translations?.[l.language]?.name && <p>{errors.translations?.[l.language]?.name?.message}</p>}
+                                            
                                         </FormItem>
                                         <FormItem hidden={true}>
                                             <FormControl>

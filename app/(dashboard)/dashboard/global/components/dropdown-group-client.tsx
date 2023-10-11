@@ -18,7 +18,7 @@ export default function DropDownGroupClient({navbarItems, dropdownGroups,dropdow
                 <Tabs defaultValue={dropdownGroups.length>0 ? dropdownGroups[0]?.id : "create"} className="w-full">
                     <TabsList className={`flex flex-row w-fit  mx-auto`}>
                         {dropdownGroups.map(nav => (
-                                <TabsTrigger value={nav.id} key={nav.id} className={"px-5"}>{nav?.translations?.find(e => e.lang === selectedLang)?.name}</TabsTrigger>
+                                <TabsTrigger value={nav.id} key={nav.id} className={"px-5"}>{nav?.translations?.find((e:any) => e.lang === selectedLang)?.name}</TabsTrigger>
                         ))}
                         <TabsTrigger value="create" className={"px-5"}>Create</TabsTrigger>
                     </TabsList>

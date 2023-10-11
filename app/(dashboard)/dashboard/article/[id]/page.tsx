@@ -71,7 +71,7 @@ const ArticlePage = async ({params}: {params: { id: string }}) => {
     });
 
     let initialData = {
-        tags: article?.tags.map(tag => tag.id),
+        tags: article?.tags.map((tag:any) => tag.id),
         categoryId : article?.category?.id,
         translations: article?.translations
     }
