@@ -21,7 +21,7 @@ import DropDownItemClient from "./components/dropdown-item-client";
 import DropDownGroupClient from "./components/dropdown-group-client";
 import GroupFooterClient from "./components/footer-group-client";
 import GetLanguages from "@/actions/get-languages";
-const GlobalPage = async () => {
+export default async function GlobalPage()  {
     const languages  = await GetLanguages()
     const navbarItems = await prisma?.navbarItem.findMany({
         include: {
@@ -161,5 +161,3 @@ const GlobalPage = async () => {
         
     )
 }
-
-export default GlobalPage
