@@ -151,7 +151,7 @@ export default function NotionEditor({value, onChangeValue}:NotionEditorProps ) 
     const [isMounted, setIsMounted] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
-    const initializeEditor = async () => {
+    const initializeEditor = React.useCallback(async () => {
         const EditorJS = (await import("@editorjs/editorjs")).default
 
 
@@ -181,7 +181,7 @@ export default function NotionEditor({value, onChangeValue}:NotionEditorProps ) 
             // @ts-ignore
             ref.current = editor
         }
-    };
+    },[value, ref,EDITOR_JS_TOOLS]);
 
 
 

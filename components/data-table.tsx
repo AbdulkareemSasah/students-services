@@ -82,13 +82,13 @@ export function DataTable<TData, TValue>({
             }
             className="max-w-sm"
         />
-    },[columnSearch, table, columnFilters,selectedLang, t])
+    },[columnSearch, table, t])
     const columnOption = React.useMemo(() => (
         <DataTableColumnOptions table={table} onValueChange={setColumnSearch} />
-    ),[selectedLang, table])
+    ),[table])
     const viewOptions = React.useMemo(()=>(
         <DataTableViewOptions table={table} />
-    ), [selectedLang, table])
+    ), [ table])
 
     return (
         <>
