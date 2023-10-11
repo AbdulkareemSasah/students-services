@@ -18,7 +18,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
-import { DropdownItem, DropdownItemTranslation } from '@/prisma/generated/client';
+import { DropdownItem, DropdownItemTranslation } from '@prisma/client';
 import { DropdownItemFormProps } from './type';
 
 

@@ -11,7 +11,7 @@ import {
     NavbarItemTranslation, 
     Page, 
     PageTranslation 
-} from "@/prisma/generated/client"
+} from "@prisma/client"
 
 
 ///////////////////////////*Models*///////////////////////////////////////////
