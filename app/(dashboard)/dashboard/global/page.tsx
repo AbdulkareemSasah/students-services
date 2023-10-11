@@ -21,8 +21,9 @@ import NavbarClient from "./components/nav-client";
 import DropDownItemClient from "./components/dropdown-item-client";
 import DropDownGroupClient from "./components/dropdown-group-client";
 import GroupFooterClient from "./components/footer-group-client";
+import GetLanguages from "@/actions/get-languages";
 const GlobalPage = async () => {
-    const languages  = await prisma.language.findMany()
+    const languages  = await GetLanguages()
     const navbarItems = await prisma.navbarItem.findMany({
         include: {
             translations:true,
