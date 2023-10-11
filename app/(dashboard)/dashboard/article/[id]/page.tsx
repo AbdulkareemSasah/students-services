@@ -1,5 +1,5 @@
 import ItemForm from "../components/item-form";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -25,7 +25,7 @@ import { getCategories } from "@/actions/get-categories";
 const ArticlePage = async ({params}: {params: { id: string }}) => {
     const ts = await getTags()
     const cs = await getCategories()
-    const article = await prisma.article.findUnique({
+    const article = await prismadb.article.findUnique({
         where: {
             id: params.id
         },

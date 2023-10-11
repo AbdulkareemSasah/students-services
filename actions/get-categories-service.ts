@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export type ItemType = {
     [lang : string] : {
@@ -9,7 +9,7 @@ export type ItemType = {
 }
 export async function getCategoriesService() {
     try {
-        const data = await prisma.categoryService.findMany({
+        const data = await prismadb.categoryService.findMany({
             select: {
                 id: true,
                 translations: {

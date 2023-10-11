@@ -1,10 +1,10 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export async function GET(req:NextRequest, {params} : {params : {
     id : string
     }}) {
-    const dropDownGroup = prisma.dropDownGroup.findUnique({
+    const dropDownGroup = prismadb.dropDownGroup.findUnique({
         where :{
             id:params.id
         }
@@ -35,7 +35,7 @@ export async function PATCH(req:NextRequest, {params} : {params : {
             }
         }
     })
-    const dropDownGroup =await prisma.dropDownGroup.update({
+    const dropDownGroup =await prismadb.dropDownGroup.update({
         where : {
             id :params.id
         },
@@ -61,7 +61,7 @@ export async function DELETE(req:NextRequest,{params} : {params : {
         id : string
     }}) {
 
-    const navbarItem = await prisma.dropDownGroup.delete({
+    const navbarItem = await prismadb.dropDownGroup.delete({
         where :{
             id: params.id
         }

@@ -1,8 +1,9 @@
+import prismadb from "@/lib/prisma";
 
 export default async function GetLanguages() {
-    let languages: any = await prisma?.language.findMany()
+    let languages: any = await prismadb.language.findMany()
     if (languages?.length === 0 ) {
-         languages = await prisma?.language.createMany({
+         languages = await prismadb.language.createMany({
             data: [
                 {
                     label: "العربية",

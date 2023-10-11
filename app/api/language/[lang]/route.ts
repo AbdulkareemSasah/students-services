@@ -1,12 +1,12 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export async function GET(req:NextRequest, {params} : {
     params : {
         lang:string
     }
 }) {
-    const lang = await prisma.language.findUnique({
+    const lang = await prismadb.language.findUnique({
         where: {
             language: params.lang
         }
@@ -24,7 +24,7 @@ export async function PATCH(req:NextRequest, {params} : {
 }) {
     const body = await req.json()
     if (body.common) {
-        const lang = await prisma.language.findUnique({
+        const lang = await prismadb.language.findUnique({
             where: {
                 language: params.lang
             }
@@ -34,7 +34,7 @@ export async function PATCH(req:NextRequest, {params} : {
             body.common = {...lang.common, ...body.common}
         }
     }
-    const lang = await prisma.language.update({
+    const lang = await prismadb.language.update({
         where: {
             language: params.lang
         },
@@ -50,7 +50,7 @@ export async function DELETE(req:NextRequest, {params} : {
         lang:string
     }
 }) {
-    const lang = await prisma.language.delete({
+    const lang = await prismadb.language.delete({
         where: {
             language: params.lang
         }

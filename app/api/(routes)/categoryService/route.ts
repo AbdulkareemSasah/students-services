@@ -1,11 +1,11 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 
 export  async  function  GET(req:NextRequest) {
     let query = req.nextUrl.searchParams
     if(query.get("take") === "all") {
-        const items = await prisma.categoryService.findMany({
+        const items = await prismadb.categoryService.findMany({
             include:{
                 translations:true,
             }
@@ -13,7 +13,7 @@ export  async  function  GET(req:NextRequest) {
         if (items) return NextResponse.json(items)
     }
     if (!query.get("take")) {
-        const items = await prisma.categoryService.findMany({
+        const items = await prismadb.categoryService.findMany({
             take:20,
             include:{
                 translations:true,
@@ -22,7 +22,7 @@ export  async  function  GET(req:NextRequest) {
         if (items) return NextResponse.json(items)
     }
     if (query.get("skip") && query.get("take")) {
-        const items = await prisma.categoryService.findMany({
+        const items = await prismadb.categoryService.findMany({
             skip:Number(query.get("skip")),
             take:Number(query.get("take")),
             include:{
@@ -66,7 +66,7 @@ export async function POST(req:NextRequest) {
     })
 
     if (translations) {
-        const categoryService = await prisma.categoryService.create({
+        const categoryService = await prismadb.categoryService.create({
             data: {
                 translations : {
                     create: newTranslations

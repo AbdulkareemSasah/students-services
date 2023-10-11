@@ -1,10 +1,10 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export async function GET(req:NextRequest, {params} : {params : {
     id : string
     }}) {
-    const category = prisma.category.findUnique({
+    const category = prismadb.category.findUnique({
         where :{
             id:params.id
         }
@@ -18,7 +18,7 @@ export async function PATCH(req:NextRequest, {params} : {params : {
         id : string
     }}) {
     const body = await req.json()
-    const category = prisma.category.update({
+    const category = prismadb.category.update({
         where : {
             id :params.id
         },
@@ -35,7 +35,7 @@ export async function DELETE(req:NextRequest,{params} : {params : {
         id : string
     }}) {
 
-    const category = prisma.category.delete({
+    const category = prismadb.category.delete({
         where :{
             id: params.id
         }

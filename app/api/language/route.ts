@@ -1,11 +1,11 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export  async function POST(req:NextRequest){
     const body = await req.json()
     const {label , language} = body
     if (label && language) {
-        const langExist = await prisma.language.findUnique({
+        const langExist = await prismadb.language.findUnique({
             where:{
                 language:language
             }
@@ -17,7 +17,7 @@ export  async function POST(req:NextRequest){
                 }
             } , {status: 301})
         }
-        const lang = await prisma.language.create({
+        const lang = await prismadb.language.create({
             data:{
                 label,
                 language,
@@ -34,7 +34,7 @@ export  async function POST(req:NextRequest){
 }
 
 export async function GET(req:NextRequest) {
-    const languages = await prisma.language.findMany({
+    const languages = await prismadb.language.findMany({
         select : {
             id:true,
             label: true,

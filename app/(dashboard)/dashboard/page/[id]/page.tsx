@@ -1,5 +1,5 @@
 import ItemForm from "../components/item-form";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -21,7 +21,7 @@ import {
 
 
 const ArticlePage = async ({params}: {params: { id: string }}) => {
-    const article = await prisma.page.findUnique({
+    const article = await prismadb.page.findUnique({
         where: {
             id: params.id
         },

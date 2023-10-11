@@ -1,8 +1,8 @@
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 import {Category} from "@/app/(dashboard)/dashboard/category/components/columns";
 
 export async function getData() {
-        const data = await prisma.category.findMany({
+        const data = await prismadb.category.findMany({
             select: {
                 id: true,
                 translations:{

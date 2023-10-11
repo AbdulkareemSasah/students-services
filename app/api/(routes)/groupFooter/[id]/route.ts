@@ -1,10 +1,10 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export async function GET(req:NextRequest, {params} : {params : {
     id : string
     }}) {
-    const groupFooter = prisma.groupFooter.findUnique({
+    const groupFooter = prismadb.groupFooter.findUnique({
         where :{
             id:params.id
         }
@@ -35,7 +35,7 @@ export async function PATCH(req:NextRequest, {params} : {params : {
             }
         }
     })
-    const groupFooter =await prisma.groupFooter.update({
+    const groupFooter =await prismadb.groupFooter.update({
         where : {
             id :params.id
         },
@@ -59,7 +59,7 @@ export async function DELETE(req:NextRequest,{params} : {params : {
         id : string
     }}) {
 
-    const groupFooter = await prisma.groupFooter.delete({
+    const groupFooter = await prismadb.groupFooter.delete({
         where :{
             id: params.id
         }

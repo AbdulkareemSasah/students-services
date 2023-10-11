@@ -1,10 +1,10 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export async function GET(req:NextRequest, {params} : {params : {
     id : string
     }}) {
-    const dropdownItem = prisma.dropdownItem.findUnique({
+    const dropdownItem = prismadb.dropdownItem.findUnique({
         where :{
             id:params.id
         }
@@ -40,7 +40,7 @@ export async function PATCH(req:NextRequest, {params} : {params : {
             }
         }
     })
-    const dropdownItem =await prisma.dropdownItem.update({
+    const dropdownItem =await prismadb.dropdownItem.update({
         where : {
             id :params.id
         },
@@ -82,7 +82,7 @@ export async function DELETE(req:NextRequest,{params} : {params : {
         id : string
     }}) {
 
-    const dropdownItem = await prisma.dropdownItem.delete({
+    const dropdownItem = await prismadb.dropdownItem.delete({
         where :{
             id: params.id
         }

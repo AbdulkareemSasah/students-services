@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import {omit} from "next/dist/shared/lib/router/utils/omit";
 const bcrypt = require('bcrypt')
@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 // POST /api/user/create
 export async function POST(req:NextRequest) {
   const body = await req.json()
-  const user = await prisma.user.findUnique({
+  const user = await prismadb.user.findUnique({
     where: { email: body.email },
     select: {
       id: true,

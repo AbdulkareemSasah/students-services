@@ -1,10 +1,10 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export async function GET(req:NextRequest, {params} : {params : {
     id : string
     }}) {
-    const navbarItem = prisma.navbarItem.findUnique({
+    const navbarItem = prismadb.navbarItem.findUnique({
         where :{
             id:params.id
         }
@@ -40,7 +40,7 @@ export async function PATCH(req:NextRequest, {params} : {params : {
             }
         }
     })
-    const navbarItem =await prisma.navbarItem.update({
+    const navbarItem =await prismadb.navbarItem.update({
         where : {
             id :params.id
         },
@@ -77,7 +77,7 @@ export async function DELETE(req:NextRequest,{params} : {params : {
         id : string
     }}) {
 
-    const navbarItem = await prisma.navbarItem.delete({
+    const navbarItem = await prismadb.navbarItem.delete({
         where :{
             id: params.id
         }

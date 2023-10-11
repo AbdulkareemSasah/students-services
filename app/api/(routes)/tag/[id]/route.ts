@@ -1,10 +1,10 @@
 import {NextRequest, NextResponse} from "next/server";
-import prisma from "@/lib/prisma";
+import prismadb from "@/lib/prisma";
 
 export async function GET(req:NextRequest, {params} : {params : {
     id : string
     }}) {
-    const tag = prisma.tag.findUnique({
+    const tag = prismadb.tag.findUnique({
         where :{
             id:params.id
         }
@@ -18,7 +18,7 @@ export async function PATCH(req:NextRequest, {params} : {params : {
         id : string
     }}) {
     const body = await req.json()
-    const tag = prisma.tag.update({
+    const tag = prismadb.tag.update({
         where : {
             id :params.id
         },
@@ -35,7 +35,7 @@ export async function DELETE(req:NextRequest,{params} : {params : {
         id : string
     }}) {
 
-    const category = prisma.tag.delete({
+    const category = prismadb.tag.delete({
         where :{
             id: params.id
         }
