@@ -1,5 +1,4 @@
 import GlobalForm from "./components/global-form";
-import prisma from "@/lib/prisma";
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -24,19 +23,19 @@ import GroupFooterClient from "./components/footer-group-client";
 import GetLanguages from "@/actions/get-languages";
 const GlobalPage = async () => {
     const languages  = await GetLanguages()
-    const navbarItems = await prisma.navbarItem.findMany({
+    const navbarItems = await prisma?.navbarItem.findMany({
         include: {
             translations:true,
             dropdownGroups:true,
             dropdownItems:true,
         }
     })
-    const pages= await prisma.page.findMany({
+    const pages= await prisma?.page.findMany({
         include:{
             translations:true
         }
     })
-    const dropdownGroups= await prisma.dropDownGroup.findMany({
+    const dropdownGroups= await prisma?.dropDownGroup.findMany({
         include:{
             translations:true,
             dropdownItems: {
@@ -46,17 +45,17 @@ const GlobalPage = async () => {
             }
         }
     })
-    const articles= await prisma.article.findMany({
+    const articles= await prisma?.article.findMany({
         include:{
             translations:true
         }
     })
-    const dropdownItems= await prisma.dropdownItem.findMany({
+    const dropdownItems= await prisma?.dropdownItem.findMany({
         include:{
             translations:true,
         }
     })
-    const groupFooters = await prisma.groupFooter.findMany({
+    const groupFooters = await prisma?.groupFooter.findMany({
         include: {
             translations:true,
             articles:true,
@@ -64,13 +63,13 @@ const GlobalPage = async () => {
         }
     })
     // (await (await fetch('/api/language')).json())
-    let global :any= await prisma.global.findFirst({
+    let global :any= await prisma?.global.findFirst({
         include :{    
             translations: true
         }
     });
     if (!global) {
-        global  = await prisma.global.create({
+        global  = await prisma?.global.create({
             data: {
                 translations:{
                     create: languages.map((lang:any) => {
