@@ -14,7 +14,7 @@ import {Check, ChevronsUpDown, Trash2Icon} from "lucide-react";
 import {Heading} from "@/components/ui/heading";
 import {AlertModal} from "@/components/modals/alert-modal";
 import {toast} from "react-hot-toast";
-import { DropDownGroup, DropDownGroupTranslation, DropdownItem } from '@prisma/client';
+import { DropDownGroup, DropDownGroupTranslation, DropdownItem } from '@/prisma/generated/client';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';

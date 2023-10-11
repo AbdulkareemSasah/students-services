@@ -1,4 +1,17 @@
-import { Article, ArticleTranslation, DropDownGroup, DropDownGroupTranslation, DropdownItem, DropdownItemTranslation, GroupFooter, GroupFooterTranslation, NavbarItem, NavbarItemTranslation, Page, PageTranslation } from "@prisma/client"
+import { 
+    Article, 
+    ArticleTranslation, 
+    DropDownGroup, 
+    DropDownGroupTranslation, 
+    DropdownItem, 
+    DropdownItemTranslation, 
+    GroupFooter, 
+    GroupFooterTranslation, 
+    NavbarItem, 
+    NavbarItemTranslation, 
+    Page, 
+    PageTranslation 
+} from "@/prisma/generated/client"
 
 
 ///////////////////////////*Models*///////////////////////////////////////////

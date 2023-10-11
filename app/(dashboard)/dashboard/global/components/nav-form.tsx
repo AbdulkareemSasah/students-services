@@ -16,7 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
-import { NavbarItem, NavbarItemTranslation } from '@prisma/client';
+import { NavbarItem, NavbarItemTranslation } from '@/prisma/generated/client';
 import { NavbarItemFormProps } from './type';
 
 interface formatedTranslation  {
