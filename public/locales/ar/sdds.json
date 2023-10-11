@@ -1,0 +1,28 @@
+{
+  "click": "عربي",
+  "dashboard" : {
+    "category" : {
+      "title" : "الاقسام",
+      "description" : "وصف الاقسام"
+    },
+    "new" : {
+      "title" : "الاقسام",
+      "description" : "وصف الاقسام"
+    }
+  },
+  "of": "من",
+  "Page": "صفحة",
+  "row(s) selected." : "صف/صفوف محددة",
+  "Go to last page": "الذهاب لاخر صفحة",
+  "Go to first page": "الذهاب لاول صفحة",
+  "Go to previous page": "الذهاب للصفحة السابقة",
+  "Go to next page": "الذهاب للصفحة التالية",
+  "Rows per page": "صف في الصفحة",
+  "Add New": "اضافة جديد",
+  "Asc": "تصاعدي",
+  "Desc":"تنازلي",
+  "Hide": "اخفاء",
+  "Search with": "بحث حسب",
+  "Columns View": "الاعمدة الظاهرة",
+  "Toggle columns": "حدد الاعمدة"
+}

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JetClientState">
+    <option name="draftsState">
+      <draftsState>
+        <option name="requests">
+          <list>
+            <requestState>
+              <option name="id" value="59a270d8-a6c3-43b8-92a0-c29fe30e3ce5" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft" />
+              <option name="url" value="http://localhost:5777/api/ar/global" />
+            </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;name&quot;: &quot;dfzgdf&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="24f222ca-00a8-4cc9-9fd9-bfa41d7baddd" />
+              <option name="method" value="POST" />
+              <option name="name" value="Draft 1" />
+              <option name="url" value="http://localhost:5777/api/ar/tag" />
+            </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;label&quot; : &quot;English&quot;,&#10;  &quot;language&quot; : &quot;en&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="fe235cae-40e2-4970-8837-77c63903bfca" />
+              <option name="method" value="POST" />
+              <option name="name" value="Draft 2" />
+              <option name="url" value="http://localhost:5777/api/language" />
+            </requestState>
+            <requestState>
+              <option name="id" value="2dd7877f-dd54-4b0e-b594-123f1a4e5162" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft 3" />
+              <option name="url" value="http://localhost:5777/api/ar/tag" />
+            </requestState>
+            <requestState>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;name&quot;: &quot;news&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="c82b2fe0-d97c-42b2-ad63-e35a5b24d6f9" />
+              <option name="method" value="POST" />
+              <option name="name" value="Draft 4" />
+              <option name="queryParams">
+                <list>
+                  <queryParamState />
+                </list>
+              </option>
+              <option name="url" value="http://localhost:5777/api/ar/tag" />
+            </requestState>
+            <requestState>
+              <option name="auth">
+                <authState>
+                  <option name="basic">
+                    <basicAuthState>
+                      <option name="pass" value="eES-:c9xUSgF3_h" />
+                      <option name="username" value="a@a.co" />
+                    </basicAuthState>
+                  </option>
+                  <option name="type" value="BASIC" />
+                </authState>
+              </option>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;title&quot; : &quot;sdfadfas&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="c4b8216c-b84a-4366-8b1e-1b49eea5de65" />
+              <option name="method" value="GET" />
+              <option name="name" value="Draft 5" />
+              <option name="queryParams">
+                <list>
+                  <queryParamState>
+                    <option name="key" value="type" />
+                    <option name="value" value="full" />
+                  </queryParamState>
+                </list>
+              </option>
+              <option name="url" value="http://localhost:5777/api/ar/article/de1da375-b1f7-403c-ad85-6e7709c037e9?type=full" />
+            </requestState>
+            <requestState>
+              <option name="auth">
+                <authState>
+                  <option name="type" value="OAUTH2" />
+                </authState>
+              </option>
+              <option name="body">
+                <bodyState>
+                  <option name="raw" value="{&#10;  &quot;language&quot;: &quot;ar&quot;,&#10;  &quot;label&quot;: &quot;العربية&quot;&#10;}" />
+                  <option name="type" value="JSON" />
+                </bodyState>
+              </option>
+              <option name="headers">
+                <list>
+                  <headerState>
+                    <option name="disabled" value="true" />
+                    <option name="key" value="Content-Type" />
+                    <option name="value" value="application/json" />
+                  </headerState>
+                  <headerState>
+                    <option name="key" value="Vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url, Accept-Encoding Cache-Control: no-store, must-revalidate X-Powered-By: Next.js Content-Type: text/html; charset=utf-8 Content-Encoding: gzip Date: Fri, 29 Sep 2023 15:52:53 GMT Connection: keep-alive Keep-Alive: timeout=5 Transfer-Encoding: chunked" />
+                  </headerState>
+                </list>
+              </option>
+              <option name="id" value="45a462fb-fdfd-4445-9d7b-c0d9e5ddb808" />
+              <option name="method" value="POST" />
+              <option name="name" value="Draft 6" />
+              <option name="url" value="http://localhost:5777/api/language" />
+            </requestState>
+          </list>
+        </option>
+      </draftsState>
+    </option>
+    <option name="id" value="01678c85-2047-40de-ac9e-7f704bea4c68" />
+  </component>
+</project>

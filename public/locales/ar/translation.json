@@ -1,0 +1,221 @@
+{
+  "Add New": "اضافة جديد",
+  "article": "",
+  "Asc": "تصاعدي",
+  "category": {
+    "create": {
+      "description": "",
+      "title": "اقسام المدونة"
+    },
+    "edit": {
+      "description": "",
+      "title": "تعديل القسم"
+    },
+    "form": {
+      "description": "وصف قصير",
+      "name": "اسم"
+    },
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      },
+      "delete": {
+        "error": "",
+        "success": ""
+      },
+      "update": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "categoryService": {
+    "create": {
+      "description": "",
+      "title": ""
+    },
+    "edit": {
+      "description": "",
+      "title": ""
+    },
+    "form": {
+      "blocks": {
+        "label": ""
+      },
+      "description": {
+        "label": "",
+        "placeholder": ""
+      },
+      "name": {
+        "label": "",
+        "placeholder": ""
+      },
+      "published": {
+        "description": "",
+        "label": ""
+      }
+    },
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      },
+      "delete": {
+        "error": "",
+        "success": ""
+      },
+      "update": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "Columns View": "الاعمدة الظاهرة",
+  "Create": "انشاء",
+  "dashboard": {
+    "article": {
+      "description": "",
+      "title": ""
+    },
+    "page": {
+      "description": "",
+      "title": ""
+    },
+    "services": {
+      "category": {
+        "description": "",
+        "title": ""
+      }
+    },
+    "tag": {
+      "description": "",
+      "title": ""
+    }
+  },
+  "Dashboard": "لوحة المشرف",
+  "Desc": "تنازلي",
+  "dropdown": "",
+  "Go to first page": "الذهاب لاول صفحة",
+  "Go to last page": "الذهاب لاخر صفحة",
+  "Go to next page": "الذهاب للصفحة التالية",
+  "Go to previous page": "الذهاب للصفحة السابقة",
+  "group": "",
+  "Hide": "اخفاء",
+  "Language": "اللغة",
+  "navItem": {
+    "form": {
+      "tag": {
+        "description": "",
+        "empty": "",
+        "search": {
+          "placeholder": ""
+        }
+      },
+      "tags": {
+        "label": ""
+      }
+    }
+  },
+  "of": "من",
+  "page": {
+    "create": {
+      "description": "",
+      "title": ""
+    },
+    "edit": {
+      "description": "",
+      "title": ""
+    },
+    "form": {
+      "blocks": {
+        "label": ""
+      },
+      "description": {
+        "label": "",
+        "placeholder": ""
+      },
+      "published": {
+        "description": "",
+        "label": ""
+      },
+      "title": {
+        "label": "",
+        "placeholder": ""
+      }
+    },
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      },
+      "delete": {
+        "error": "",
+        "success": ""
+      },
+      "update": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "Page": "صفحة",
+  "row(s) selected": "صفوف محددة",
+  "Rows per page": "صف في الصفحة",
+  "Save changes": "حفظ التغييرات",
+  "Search with": "بحث حسب",
+  "service": {
+    "create": {
+      "description": "",
+      "title": ""
+    },
+    "edit": {
+      "description": "",
+      "title": ""
+    },
+    "form": {
+      "blocks": {
+        "label": ""
+      },
+      "category": {
+        "label": "",
+        "placeholder": ""
+      },
+      "description": {
+        "label": "",
+        "placeholder": ""
+      },
+      "name": {
+        "label": "",
+        "placeholder": ""
+      },
+      "published": {
+        "description": "",
+        "label": ""
+      }
+    },
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      },
+      "delete": {
+        "error": "",
+        "success": ""
+      },
+      "update": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "tag": {
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "Toggle columns": "حدد الاعمدة"
+}

@@ -1,0 +1,221 @@
+{
+  "Add New": "",
+  "article": "",
+  "Asc": "",
+  "category": {
+    "create": {
+      "description": "",
+      "title": ""
+    },
+    "edit": {
+      "description": "",
+      "title": ""
+    },
+    "form": {
+      "description": "",
+      "name": ""
+    },
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      },
+      "delete": {
+        "error": "",
+        "success": ""
+      },
+      "update": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "categoryService": {
+    "create": {
+      "description": "",
+      "title": ""
+    },
+    "edit": {
+      "description": "",
+      "title": ""
+    },
+    "form": {
+      "blocks": {
+        "label": ""
+      },
+      "description": {
+        "label": "",
+        "placeholder": ""
+      },
+      "name": {
+        "label": "",
+        "placeholder": ""
+      },
+      "published": {
+        "description": "",
+        "label": ""
+      }
+    },
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      },
+      "delete": {
+        "error": "",
+        "success": ""
+      },
+      "update": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "Columns View": "",
+  "Create": "",
+  "dashboard": {
+    "article": {
+      "description": "",
+      "title": ""
+    },
+    "page": {
+      "description": "",
+      "title": ""
+    },
+    "services": {
+      "category": {
+        "description": "",
+        "title": ""
+      }
+    },
+    "tag": {
+      "description": "",
+      "title": ""
+    }
+  },
+  "Dashboard": "",
+  "Desc": "",
+  "dropdown": "",
+  "Go to first page": "",
+  "Go to last page": "",
+  "Go to next page": "",
+  "Go to previous page": "",
+  "group": "",
+  "Hide": "",
+  "Language": "",
+  "navItem": {
+    "form": {
+      "tag": {
+        "description": "",
+        "empty": "",
+        "search": {
+          "placeholder": ""
+        }
+      },
+      "tags": {
+        "label": ""
+      }
+    }
+  },
+  "of": "",
+  "page": {
+    "create": {
+      "description": "",
+      "title": ""
+    },
+    "edit": {
+      "description": "",
+      "title": ""
+    },
+    "form": {
+      "blocks": {
+        "label": ""
+      },
+      "description": {
+        "label": "",
+        "placeholder": ""
+      },
+      "published": {
+        "description": "",
+        "label": ""
+      },
+      "title": {
+        "label": "",
+        "placeholder": ""
+      }
+    },
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      },
+      "delete": {
+        "error": "",
+        "success": ""
+      },
+      "update": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "Page": "",
+  "row(s) selected": "",
+  "Rows per page": "",
+  "Save changes": "",
+  "Search with": "",
+  "service": {
+    "create": {
+      "description": "",
+      "title": ""
+    },
+    "edit": {
+      "description": "",
+      "title": ""
+    },
+    "form": {
+      "blocks": {
+        "label": ""
+      },
+      "category": {
+        "label": "",
+        "placeholder": ""
+      },
+      "description": {
+        "label": "",
+        "placeholder": ""
+      },
+      "name": {
+        "label": "",
+        "placeholder": ""
+      },
+      "published": {
+        "description": "",
+        "label": ""
+      }
+    },
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      },
+      "delete": {
+        "error": "",
+        "success": ""
+      },
+      "update": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "tag": {
+    "toast": {
+      "create": {
+        "error": "",
+        "success": ""
+      }
+    }
+  },
+  "Toggle columns": ""
+}
