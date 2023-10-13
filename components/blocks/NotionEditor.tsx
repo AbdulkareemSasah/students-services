@@ -1,6 +1,5 @@
 "use client"
 import React, { useState, useEffect, useRef } from "react";
-import dynamic from 'next/dynamic';
 // @ts-ignore
 import Embed from '@editorjs/embed'
 // @ts-ignore
