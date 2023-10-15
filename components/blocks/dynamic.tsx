@@ -17,7 +17,7 @@ import { cellPlugins } from '@/plugins/cellPlugins';
 const typeFields = [
     "notion editor",
     // "quill text editor",
-    "novel text editor"
+    // "novel text editor"
 ]
 type Block = {
     type: string,
@@ -91,7 +91,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                                 </>
                                     
                                 } */}
-                                {f === "novel text editor" &&
+                                {/* {f === "novel text editor" &&
                                 <>
                                     <NovalEditor 
                                         className='dark:bg-background'
@@ -105,7 +105,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                                     />
                                 </>
                                     
-                                }
+                                } */}
                             </CardContent>
                     </Card>
                 ))}
