@@ -3,8 +3,8 @@ import {PrismaAdapter} from "@auth/prisma-adapter";
 import prisma from "@/lib/prisma";
 import GoogleProvider, { GoogleProfile} from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-
-
+import { compare } from "bcrypt";
+import prismadb from "@/lib/prisma"
 export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma),
     session: {
@@ -28,35 +28,26 @@ export const authOptions: NextAuthOptions = {
           clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         }),
         CredentialsProvider({
-      id: "credentials",
-      name: "credentials",
-      credentials: {
-            email: {
-              label: "Email",
-              type: "email",
-              placeholder: "username@example.com",
-            },
-            password: { label: "Password", type: "password" },
-      },
-      authorize: async (credentials, req) => {
-        const res = await fetch(
-          `${process.env.NEXTAUTH_URL}/api/user/check-credentials`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(credentials)
-          }
-        )
-          const user = await res.json()
-
-        if (user && res.ok) {
-          return user;
-        } else {
-          return null;
-        }
-      },
+          credentials: {
+            email: { label: "Email", type: "email" },
+            password: { label: "Password", type: "password" }
+          },
+          async authorize(credentials) {
+            const { email, password } = credentials ?? {}
+            if (!email || !password) {
+              throw new Error("Missing username or password");
+            }
+            const user = await prismadb.user.findUnique({
+              where: {
+                email,
+              },
+            });
+            // if user doesn't exist or password doesn't match
+            if (!user || !(await compare(password, user.password))) {
+              throw new Error("Invalid username or password");
+            }
+            return user;
+          },
         }),
 
     ],

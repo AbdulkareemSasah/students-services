@@ -8,10 +8,16 @@ import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components
 import {useTranslation} from "react-i18next";
 import NotionEditor from './NotionEditor';
 import QuillEditor from './quill/editor';
+import NovelEditor from './noval-editor';
+import {Editor as NovalEditor} from 'novel';
+import Editor from './editor';
+
+import { cellPlugins } from '@/plugins/cellPlugins';
 
 const typeFields = [
     "notion editor",
-    "quill text editor"
+    // "quill text editor",
+    "novel text editor"
 ]
 type Block = {
     type: string,
@@ -57,9 +63,9 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
 
                         </CardHeader>
                             <CardContent className={"w-full"}>
-                                {f === "notion editor" &&
+                                 {f === "notion editor" &&
                                     <> 
-                                     <NotionEditor
+                                     <Editor
                                          value={field?.value[index]?.content ? JSON.parse(field.value?.[index]?.content) : ""}
                                          onChangeValue={newValue => {
                                              field.value[index] = {
@@ -70,7 +76,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                                      />
                                     </>
                                 }
-                                {f === "quill text editor" &&
+                                {/*f === "quill text editor" &&
                                 <>
                                 <QuillEditor
                                         name={"editor"+index}
@@ -81,6 +87,21 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                                                 content: newValue
                                             }
                                         }}
+                                    />
+                                </>
+                                    
+                                } */}
+                                {f === "novel text editor" &&
+                                <>
+                                    <NovalEditor 
+                                        className='dark:bg-background'
+                                        onUpdate={ (editor)=> {
+                                            field.value[index] = {
+                                                type : "quill text editor",
+                                                content: editor
+                                            }
+                                        }}
+                                    
                                     />
                                 </>
                                     

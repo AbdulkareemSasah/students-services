@@ -1,33 +1,24 @@
 import prismadb from "@/lib/prisma";
+import { NextApiRequest, NextApiResponse } from "next";
+import { hash } from "bcrypt";
+import { NextResponse } from "next/server";
 
-import { NextRequest, NextResponse } from "next/server";
-const bcrypt = require("bcrypt")
-
-
-
-// POST /api/user
-export async function POST(req:NextRequest) {
-
-  const body = await req.json()
-  
-  const { email, password } = body;
-
-  
-  const hash = await bcrypt.hashSync(password, 10)
-  const user = await prismadb.user.create({
-      data: { 
-        email:email,
-        password: hash 
+export async function POST(req: Request) {
+  const { email, password } = await req.json();
+  const exists = await prismadb.user.findUnique({
+    where: {
+      email,
+    },
+  });
+  if (exists) {
+    return NextResponse.json({ error: "User already exists" }, { status: 400 });
+  } else {
+    const user = await prismadb.user.create({
+      data: {
+        email,
+        password: await hash(password, 10),
       },
-      select:{
-          role:true,
-          email:true,
-          name:true,
-          image:true
-      }
     });
-
-  return NextResponse.json(user)
-
-  
+    return NextResponse.json(user);
+  }
 }

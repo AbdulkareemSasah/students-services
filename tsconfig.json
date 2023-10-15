@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/craft/craft-editor.js", "components/craft/components/Topbar.js", "components/craft/components/ToolBox.js", "components/craft/components/setting-pannel.js", "components/craft/components/header.jw"],
   "exclude": ["node_modules"]
 }
