@@ -89,7 +89,7 @@ export default async function GlobalPage()  {
 
 
     return (
-        <div className="space-y-9">
+        <div className="space-y-9 container-xl">
 
             <Tabs defaultValue="edit" className="w-full">
             <TabsList className="grid w-full  mx-auto grid-cols-2">

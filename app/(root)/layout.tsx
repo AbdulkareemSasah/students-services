@@ -23,18 +23,23 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <>
-            <Providers>
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                >
-                                {children}
-                </ThemeProvider>
-                <ThemeSwitcher />
-                <Analytics />
-                <Toaster />
-            </Providers>
+            <div className="supports-backdrop-blur:bg-background/80 bg-background backdrop-blur">
+                    <div className="supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
+                        {children}
+                        <HotToaster
+                            position="bottom-center"
+                            toastOptions={{
+                                // Define default options
+                                className: '',
+                                duration: 5000,
+                                style: {
+                                    background: '#363636',
+                                    color: '#fff',
+                                }
+                            }}
+                        />
+                    </div>
+            </div>      
         </>
     )
 }

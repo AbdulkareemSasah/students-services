@@ -1,72 +1,62 @@
 import { MainNavItem, SidebarNavItem } from "@/types/nav"
 
-interface DashboardConfig {
-  sidebarNav: SidebarNavItem[]
-}
 
-export const dashboardConfig: DashboardConfig = {
-  sidebarNav: [
+
+export const dashboardConfig = {
+  name: "Student Service",
+  url: "http://localhost:5777",
+  ogImage: "http://localhost:5777/og.jpg",
+  description:
+    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+  links: {
+    twitter: "https://twitter.com/shadcn",
+    github: "https://github.com/shadcn-ui/ui",
+  },
+  mainNav: [
     {
       title: "Users",
-      items: [
-        {
-          title: "Users",
-          href: "/dashboard/users",
-          items: [],
-        },
-      ],
+      href: "/dashboard/users",
+      items: [],
     },
     {
-      title: "Site",
-      items: [
-        {
-          title: "Global",
-          href: "/dashboard/global",
-          items: [],
-        },
-        
-      ],
+      title: "Global",
+      href: "/dashboard/global",
+      items: []
+    },
+
+    {
+      title: "Page",
+      href: "/dashboard/page",
+      items: [],
     },
     {
-      title: "Blog",
-      items: [
-        {
-          title: "Page",
-          href: "/dashboard/page",
-          items: [],
-        },
-        {
-          title: "Category",
-          href: "/dashboard/category",
-          items: [],
-        },
-        {
-          title: "Tag",
-          href: "/dashboard/tag",
-          items: [],
-        },
-        {
-          title: "Article",
-          href: "/dashboard/article",
-          items: [],
-        }
-      ],
+      title: "Category",
+      href: "/dashboard/category",
+      items: [],
     },
     {
-      title: "Services",
-      href: "/dashboard/services",
-      items: [
-        {
-          title: "Category",
-          href: "/dashboard/services/category",
-          items: [],
-        },
-        {
-          title: "Service",
-          href: "/dashboard/services/service",
-          items: [],
-        },
-      ],
+      title: "Tag",
+      href: "/dashboard/tag",
+      items: [],
     },
+    {
+      title: "Article",
+      href: "/dashboard/article",
+      items: [],
+    },
+    {
+      title: "Category",
+      href: "/dashboard/services/category",
+      items: [],
+    },
+    {
+      title: "Service",
+      href: "/dashboard/services/service",
+      items: [],
+    },
+
   ],
 }
+
+
+export type dashboardConfig = typeof dashboardConfig
