@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 
 import { dashboardConfig } from "@/config/dashboard"
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/dashboard/icons"
 import { Badge } from "@/components/dashboard/ui/badge"
 
 export function MainNav() {

@@ -1,3 +1,31 @@
+import prismadb from "@/lib/prisma"
+
+const getSiteData =async () => {
+  const global = await prismadb.global.findFirst({
+    include: {
+      socialLinks:true,
+      translations:true,
+    }
+  })
+  // const navitems = await prismadb.navbarItem.findMany({
+  //   include :{
+  //     dropdownGroups:{
+  //       select: {
+  //         translations: {
+  //           include: {
+  //             name:true
+  //           }
+  //         }
+  //       }
+  //     },
+  //     dropdownItems:true,
+  //     article:true,
+  //     page:true,
+  //     translations:true,
+  //   }
+  // })
+}
+
 export const siteConfig = {
   name: "shadcn/ui",
   url: "http://localhost:5777",

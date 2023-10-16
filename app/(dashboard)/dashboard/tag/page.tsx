@@ -1,5 +1,5 @@
 import { columns ,initial_columns_view } from "./components/columns"
-import { DataTable } from "@/components/data-table"
+import { DataTable } from "@/components/dashboard/data-table"
 import {getData} from "./components/data";
 import {HeaderPage} from "./components/header";
 

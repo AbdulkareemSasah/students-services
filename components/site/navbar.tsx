@@ -33,6 +33,7 @@ import LanguageSwitcher from "./languageSwitcher";
 
 
 export const Navbar = () => {
+	
 	const searchInput = (
 		<Input
 			aria-label="بحث"

@@ -7,7 +7,7 @@ import { ViewVerticalIcon } from "@radix-ui/react-icons"
 
 
 import { cn } from "@/lib/utils"
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/dashboard/icons"
 import { Button } from "@/components/dashboard/ui/button"
 import { ScrollArea } from "@/components/dashboard/ui/scroll-area"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/dashboard/ui/sheet"

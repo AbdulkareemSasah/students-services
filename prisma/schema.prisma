@@ -3,8 +3,8 @@
 
 datasource db {
   provider          = "postgresql"
-  url = env("DATABASE_PRISMA_URL") // uses connection pooling
-  directUrl = env("DATABASE_URL_NON_POOLING") // uses a direct connection
+  url               = env("DATABASE_PRISMA_URL") // uses connection pooling
+  directUrl         = env("DATABASE_URL_NON_POOLING") // uses a direct connection
   shadowDatabaseUrl = env("DATABASE_URL_NON_POOLING") // used for migrations// Only needed when using a cloud provider that doesn't support the creation of new databases, like Heroku. Learn more: https://pris.ly/d/migrate-shadow
 }
 
@@ -148,6 +148,7 @@ model NavbarItem {
   articleId      String?                 @unique
   createdAt      DateTime                @default(now())
   updatedAt      DateTime                @updatedAt
+  active         Boolean                 @default(false)
 
   @@unique([pageId, articleId])
 }
@@ -175,6 +176,7 @@ model DropDownGroup {
   dropdownItems DropdownItem[]
   createdAt     DateTime                   @default(now())
   updatedAt     DateTime                   @updatedAt
+  active        Boolean                    @default(false)
 
   @@index([navItemId])
 }
@@ -199,17 +201,18 @@ model DropdownItem {
   translations DropdownItemTranslation[]
   group        DropDownGroup?            @relation(fields: [groupId], references: [id], onDelete: Cascade)
   groupId      String?
-  page         Page?                      @relation(fields: [pageId], references: [id])
-  pageId       String?                    @unique
+  page         Page?                     @relation(fields: [pageId], references: [id])
+  pageId       String?                   @unique
   forGroup     Boolean                   @default(false)
   forArticle   Boolean                   @default(false)
   forPage      Boolean                   @default(false)
-  article      Article?                 @relation(fields: [articleId], references: [id])
-  articleId    String?                    @unique
+  article      Article?                  @relation(fields: [articleId], references: [id])
+  articleId    String?                   @unique
   navItem      NavbarItem?               @relation(fields: [navItemId], references: [id], onDelete: Cascade)
   navItemId    String?
   createdAt    DateTime                  @default(now())
   updatedAt    DateTime                  @updatedAt
+  active       Boolean                   @default(false)
 
   @@index([groupId])
   @@index([navItemId])
@@ -264,6 +267,7 @@ model GroupFooter {
   pages        Page[]
   createdAt    DateTime                 @default(now())
   updatedAt    DateTime                 @updatedAt
+  active       Boolean                  @default(false)
 
   @@index([footerId])
 }
@@ -292,6 +296,7 @@ model Page {
   groupFooterId String?
   createdAt     DateTime          @default(now())
   updatedAt     DateTime          @updatedAt
+  active        Boolean           @default(false)
 
   @@index([groupFooterId])
 }
@@ -302,6 +307,7 @@ model PageTranslation {
   lang        String
   author      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
+  nameInNav   String
   title       String
   description String?
   images      String[]
@@ -323,6 +329,7 @@ model Category {
   articles     Article[]
   createdAt    DateTime              @default(now())
   updatedAt    DateTime              @updatedAt
+  active       Boolean               @default(false)
 }
 
 model CategoryTranslation {
@@ -389,6 +396,7 @@ model Tag {
   articles     Article[]
   createdAt    DateTime         @default(now())
   updatedAt    DateTime         @updatedAt
+  active       Boolean          @default(false)
 }
 
 model TagTranslation {
@@ -427,6 +435,7 @@ model CommentTranslation {
   commentId String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  active    Boolean  @default(false)
 
   @@unique([lang, commentId])
   @@index([commentId])
@@ -447,6 +456,7 @@ model Block {
   serviceId         String?
   createdAt         DateTime                    @default(now())
   updatedAt         DateTime                    @updatedAt
+  active            Boolean                     @default(false)
 }
 
 model CategoryService {
@@ -456,6 +466,7 @@ model CategoryService {
   published    Boolean                      @default(false)
   createdAt    DateTime                     @default(now())
   updatedAt    DateTime                     @updatedAt
+  active       Boolean                      @default(false)
 }
 
 model CategoryServiceTranslation {
@@ -483,6 +494,7 @@ model Service {
   orders          Order[]
   createdAt       DateTime             @default(now())
   updatedAt       DateTime             @updatedAt
+  active          Boolean              @default(false)
 }
 
 model ServiceTranslation {
