@@ -5,7 +5,7 @@ import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/dashboard/icons"
 
 interface ThemeComponentProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string

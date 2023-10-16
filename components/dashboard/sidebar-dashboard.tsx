@@ -2,11 +2,11 @@
 import Link from "next/link";
 import {CardDescription , CardTitle} from "@/components/dashboard/ui/card";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/dashboard/ui/avatar";
-import {SelectLanguage} from "@/components/selectLanguage";
+import {SelectLanguage} from "@/components/dashboard/selectLanguage";
 import {ScrollArea} from "@/components/dashboard/ui/scroll-area";
 import {useTranslation} from "react-i18next";
 import {useSession} from "next-auth/react";
-import {DashboardSidebarNav} from "@/components/sidebar-nav";
+import {DashboardSidebarNav} from "@/components/dashboard/sidebar-nav";
 import {dashboardConfig} from "@/config/dashboard";
 import {cn} from "@/lib/utils";
 export function SidebarDashboard() {
@@ -46,7 +46,7 @@ export function SidebarDashboard() {
                 </div>
             </div>
         </div>
-        <DashboardSidebarNav items={dashboardConfig.sidebarNav} />
+        <DashboardSidebarNav items={dashboardConfig.mainNav} />
     </ScrollArea>
 
 }

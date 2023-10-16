@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { cn } from "@/lib/utils"
-import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
+import { CopyButton, CopyWithClassNames } from "@/components/dashboard/copy-button"
 import {
   Tabs,
   TabsContent,

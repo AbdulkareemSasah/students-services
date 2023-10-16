@@ -15,9 +15,9 @@ import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { DrawerContent, DrawerTrigger } from "@/components/drawer"
-import { ThemeWrapper } from "@/components/theme-wrapper"
+import { copyToClipboardWithMeta } from "@/components/dashboard/copy-button"
+import { DrawerContent, DrawerTrigger } from "@/components/dashboard/drawer"
+import { ThemeWrapper } from "@/components/dashboard/theme-wrapper"
 import { Button } from "@/components/dashboard/ui/button"
 import {
   Dialog,

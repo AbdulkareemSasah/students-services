@@ -2,14 +2,14 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
-import { CommandMenu } from "@/components/command-menu"
-import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
-import { MobileNav } from "@/components/mobile-nav"
-import { ModeToggle } from "@/components/mode-toggle"
+import { CommandMenu } from "@/components/dashboard/command-menu"
+import { Icons } from "@/components/dashboard/icons"
+import { MainNav } from "@/components/dashboard/main-nav"
+import { MobileNav } from "@/components/dashboard/mobile-nav"
+import { ModeToggle } from "@/components/dashboard/mode-toggle"
 import { buttonVariants } from "@/components/dashboard/ui/button"
-import {ThemeCustomizer} from "@/components/theme-customizer";
-import LanguageSwitcher from "@/components/lang-toggle";
+import {ThemeCustomizer} from "@/components/dashboard/theme-customizer";
+import LanguageSwitcher from "@/components/dashboard/lang-toggle";
 import {Button} from "@/components/dashboard/ui/button";
 import {Paintbrush} from "lucide-react";
 

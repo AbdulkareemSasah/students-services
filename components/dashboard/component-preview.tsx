@@ -5,10 +5,10 @@ import { Index } from "@/__registry__"
 
 import { cn } from "@/lib/utils"
 import { useConfig } from "@/hooks/use-config"
-import { CopyButton, CopyWithClassNames } from "@/components/copy-button"
-import { Icons } from "@/components/icons"
-import { StyleSwitcher } from "@/components/style-switcher"
-import { ThemeWrapper } from "@/components/theme-wrapper"
+import { CopyButton, CopyWithClassNames } from "@/components/dashboard/copy-button"
+import { Icons } from "@/components/dashboard/icons"
+import { StyleSwitcher } from "@/components/dashboard/style-switcher"
+import { ThemeWrapper } from "@/components/dashboard/theme-wrapper"
 import {
   Tabs,
   TabsContent,
