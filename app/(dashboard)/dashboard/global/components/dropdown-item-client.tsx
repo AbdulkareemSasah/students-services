@@ -1,7 +1,7 @@
 "use client"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/dashboard/ui/tabs";
 import { useContext } from "react";
-import { LanguageContext } from "@/components/providers/language-provider";
+import { LanguageContext } from "@/components/dashboard/providers/language-provider";
 import DropdownItemForm from "./dropdown-item-form";
 import { DropDownClientProps } from "./type";
 

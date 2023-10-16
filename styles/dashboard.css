@@ -1,0 +1,389 @@
+@config "../tailwind.dashbord.config.ts";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@layer base {
+  :root {
+    --ck-border-radius: 4px;
+
+    /* Overrides the default font size in the theme. */
+    --ck-font-size-base: 14px;
+
+    /* Helper variables to avoid duplication in the colors. */
+    --ck-custom-background: hsl(270, 1%, 29%);
+    --ck-custom-foreground: hsl(255, 3%, 18%);
+    --ck-custom-border: hsl(300, 1%, 22%);
+    --ck-custom-white: hsl(0, 0%, 100%);
+
+    /* -- Overrides generic colors. ------------------------------------------------------------- */
+
+    --ck-color-base-foreground: var(--ck-custom-background);
+    --ck-color-focus-border: hsl(208, 90%, 62%);
+    --ck-color-text: hsl(0, 0%, 98%);
+    --ck-color-shadow-drop: hsla(0, 0%, 0%, 0.2);
+    --ck-color-shadow-inner: hsla(0, 0%, 0%, 0.1);
+
+    /* -- Overrides the default .ck-button class colors. ---------------------------------------- */
+
+    --ck-color-button-default-background: var(--ck-custom-background);
+    --ck-color-button-default-hover-background: hsl(270, 1%, 22%);
+    --ck-color-button-default-active-background: hsl(270, 2%, 20%);
+    --ck-color-button-default-active-shadow: hsl(270, 2%, 23%);
+    --ck-color-button-default-disabled-background: var(--ck-custom-background);
+
+    --ck-color-button-on-background: var(--ck-custom-foreground);
+    --ck-color-button-on-hover-background: hsl(255, 4%, 16%);
+    --ck-color-button-on-active-background: hsl(255, 4%, 14%);
+    --ck-color-button-on-active-shadow: hsl(240, 3%, 19%);
+    --ck-color-button-on-disabled-background: var(--ck-custom-foreground);
+
+    --ck-color-button-action-background: hsl(168, 76%, 42%);
+    --ck-color-button-action-hover-background: hsl(168, 76%, 38%);
+    --ck-color-button-action-active-background: hsl(168, 76%, 36%);
+    --ck-color-button-action-active-shadow: hsl(168, 75%, 34%);
+    --ck-color-button-action-disabled-background: hsl(168, 76%, 42%);
+    --ck-color-button-action-text: var(--ck-custom-white);
+
+    --ck-color-button-save: hsl(120, 100%, 46%);
+    --ck-color-button-cancel: hsl(15, 100%, 56%);
+
+    /* -- Overrides the default .ck-dropdown class colors. -------------------------------------- */
+
+    --ck-color-dropdown-panel-background: var(--ck-custom-background);
+    --ck-color-dropdown-panel-border: var(--ck-custom-foreground);
+
+    /* -- Overrides the default .ck-splitbutton class colors. ----------------------------------- */
+
+    --ck-color-split-button-hover-background: var(--ck-color-button-default-hover-background);
+    --ck-color-split-button-hover-border: var(--ck-custom-foreground);
+
+    /* -- Overrides the default .ck-input class colors. ----------------------------------------- */
+
+    --ck-color-input-background: var(--ck-custom-background);
+    --ck-color-input-border: hsl(257, 3%, 43%);
+    --ck-color-input-text: hsl(0, 0%, 98%);
+    --ck-color-input-disabled-background: hsl(255, 4%, 21%);
+    --ck-color-input-disabled-border: hsl(250, 3%, 38%);
+    --ck-color-input-disabled-text: hsl(0, 0%, 78%);
+
+    /* -- Overrides the default .ck-labeled-field-view class colors. ---------------------------- */
+
+    --ck-color-labeled-field-label-background: var(--ck-custom-background);
+
+    /* -- Overrides the default .ck-list class colors. ------------------------------------------ */
+
+    --ck-color-list-background: var(--ck-custom-background);
+    --ck-color-list-button-hover-background: var(--ck-color-base-foreground);
+    --ck-color-list-button-on-background: var(--ck-color-base-active);
+    --ck-color-list-button-on-background-focus: var(--ck-color-base-active-focus);
+    --ck-color-list-button-on-text: var(--ck-color-base-background);
+
+    /* -- Overrides the default .ck-balloon-panel class colors. --------------------------------- */
+
+    --ck-color-panel-background: var(--ck-custom-background);
+    --ck-color-panel-border: var(--ck-custom-border);
+
+    /* -- Overrides the default .ck-toolbar class colors. --------------------------------------- */
+
+    --ck-color-toolbar-background: var(--ck-custom-background);
+    --ck-color-toolbar-border: var(--ck-custom-border);
+
+    /* -- Overrides the default .ck-tooltip class colors. --------------------------------------- */
+
+    --ck-color-tooltip-background: hsl(252, 7%, 14%);
+    --ck-color-tooltip-text: hsl(0, 0%, 93%);
+
+    /* -- Overrides the default colors used by the ckeditor5-image package. --------------------- */
+
+    --ck-color-image-caption-background: hsl(0, 0%, 97%);
+    --ck-color-image-caption-text: hsl(0, 0%, 20%);
+
+    /* -- Overrides the default colors used by the ckeditor5-widget package. -------------------- */
+
+    --ck-color-widget-blurred-border: hsl(0, 0%, 87%);
+    --ck-color-widget-hover-border: hsl(43, 100%, 68%);
+    --ck-color-widget-editable-focus-background: var(--ck-custom-white);
+
+    /* -- Overrides the default colors used by the ckeditor5-link package. ---------------------- */
+
+    --ck-color-link-default: hsl(190, 100%, 75%);
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5% 64.9%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .step {
+    counter-increment: step;
+  }
+
+  .step:before {
+    @apply absolute w-9 h-9 bg-muted rounded-full font-mono font-medium text-center text-base inline-flex items-center justify-center -indent-px border-4 border-background;
+    @apply ml-[-50px] mt-[-4px];
+    content: counter(step);
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}
+
+.ck-content blockquote {
+  display: block;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+
+.ck-content strong, .ck-content b {
+  font-weight: bold;
+}
+
+.ck-content i, .ck-content address {
+  font-style: italic;
+}
+
+/* heading elements */
+
+.ck-content h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67__qem;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.ck-content h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83__qem;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.ck-content h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.ck-content h4 {
+  display: block;
+  margin-block-start: 1.33__qem;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.ck-content h5 {
+  display: block;
+  font-size: .83em;
+  margin-block-start: 1.67__qem;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.ck-content h6 {
+  display: block;
+  font-size: .67em;
+  margin-block-start: 2.33__qem;
+  margin-block-end: 2.33em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+/* tables */
+
+.ck-content table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+}
+
+.ck-content .table table td{
+  border: 1px solid #bfbfbf !important;
+}
+
+.ck-content thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.ck-content tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.ck-content tfoot {
+  display: table-footer-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+/* for tables without table section elements (can happen with XHTML or dynamically created tables) */
+.ck-content table > tr {
+  vertical-align: middle;
+}
+
+.ck-content col {
+  display: table-column;
+}
+
+.ck-content colgroup {
+  display: table-column-group;
+}
+
+.ck-content tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.ck-content td, .ck-content th {
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+.ck-content th {
+  font-weight: bold;
+}
+
+.ck-content caption {
+  display: table-caption;
+  text-align: center;
+}
+
+/* lists */
+
+.ck-content ul, .ck-content menu, .ck-content dir {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 40px;
+}
+
+.ck-content ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1__qem;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 40px;
+}
+
+.ck-content li {
+  display: list-item;
+  text-align: match-parent;
+}
+
+.ck-content ::marker {
+  unicode-bidi: isolate;
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+  text-transform: none;
+}
+
+.ck-content ul ul, .ck-content ol ul {
+  list-style-type: circle;
+}
+
+.ck-content ol ol ul, .ck-content ol ul ul, .ck-content ul ol ul, .ck-content ul ul ul {
+  list-style-type: square;
+}
+
+.ck-content a:any-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: auto;
+}
+
+.ck-content a:any-link:active {
+  color: red;
+}
+
+#toolbar.sticky {
+  position: sticky;
+  top: 3.5rem;
+  z-index: 10;
+}

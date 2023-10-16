@@ -8,9 +8,9 @@ import { ViewVerticalIcon } from "@radix-ui/react-icons"
 
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Button } from "@/components/dashboard/ui/button"
+import { ScrollArea } from "@/components/dashboard/ui/scroll-area"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/dashboard/ui/sheet"
 import {useSession} from "next-auth/react";
 import {dashboardConfig} from "@/config/dashboard";
 import {useTranslation} from "react-i18next";

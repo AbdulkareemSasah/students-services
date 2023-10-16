@@ -1,45 +1,58 @@
-import "@/styles/globals.css"
-import { Metadata } from "next"
+"use client";
+import { Metadata } from "next";
+import { siteConfig } from "@/config/site";
+import { Navbar } from "@/components/site/navbar";
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ThemeProviderProps } from "next-themes/dist/types";
+import { Link, NextUIProvider } from "@nextui-org/react";
+import "@/styles/site.css";
+import { Providers } from "./providers";
+// export const metadata: Metadata = {
+//   title: {
+//     default: siteConfig.name,
+//     template: `%s - ${siteConfig.name}`,
+//   },
+//   description: siteConfig.description,
+//   themeColor: [
+//     { media: "(prefers-color-scheme: light)", color: "white" },
+//     { media: "(prefers-color-scheme: dark)", color: "black" },
+//   ],
+//   icons: {
+//     icon: "/favicon.ico",
+//     shortcut: "/favicon-16x16.png",
+//     apple: "/apple-touch-icon.png",
+//   },
+// };
 
-import { siteConfig } from "@/config/site"
-import { Analytics } from "@/components/analytics"
-import { ThemeProvider } from "@/components/providers"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeSwitcher } from "@/components/theme-switcher"
-import { Toaster  } from "@/components/ui/toaster"
-import {Toaster as HotToaster} from "react-hot-toast";
-import "public/registry/themes.css"
-import Providers from "@/app/providers";
-import * as React from "react";
 
 
-
-interface RootLayoutProps {
-    children: React.ReactNode
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
-    return (
-        <>
-            <div className="supports-backdrop-blur:bg-background/80 bg-background backdrop-blur">
-                    <div className="supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur">
-                        {children}
-                        <HotToaster
-                            position="bottom-center"
-                            toastOptions={{
-                                // Define default options
-                                className: '',
-                                duration: 5000,
-                                style: {
-                                    background: '#363636',
-                                    color: '#fff',
-                                }
-                            }}
-                        />
-                    </div>
-            </div>      
-        </>
-    )
+export default function RootLayout({
+  children,
+  themeProps
+}: {
+  children: React.ReactNode;
+  themeProps?: ThemeProviderProps;
+}) {
+  return (
+      <Providers>
+          <div className="relative flex flex-col h-screen">
+            <Navbar />
+            <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
+              {children}
+            </main>
+            <footer className="w-full flex items-center justify-center py-3">
+              <Link
+                isExternal
+                className="flex items-center gap-1 text-current"
+                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
+                title="nextui.org homepage"
+              >
+                <span className="text-default-600">Powered by</span>
+                <p className="text-primary">NextUI</p>
+              </Link>
+            </footer>
+          </div>
+      </Providers>
+  
+  );
 }

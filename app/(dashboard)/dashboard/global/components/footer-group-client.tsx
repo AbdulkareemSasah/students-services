@@ -1,12 +1,12 @@
 "use client"
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/dashboard/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/dashboard/ui/card";
+import { Input } from "@/components/dashboard/ui/input";
+import { Label } from "@/components/dashboard/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/dashboard/ui/tabs";
 import { useContext } from "react";
-import { LanguageContext } from "@/components/providers/language-provider";
+import { LanguageContext } from "@/components/dashboard/providers/language-provider";
 import GroupFooterForm from "./footer-group-form";
 import { GroupFooterClientProps } from "./type";
 

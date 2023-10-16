@@ -1,10 +1,10 @@
 "use client"
 
-import { Checkbox } from "@/components/ui/checkbox"
+import { Checkbox } from "@/components/dashboard/ui/checkbox"
 import {ColumnDef, VisibilityState} from "@tanstack/react-table"
-import {DataTableColumnHeader} from "@/components/Table/column-header";
+import {DataTableColumnHeader} from "@/components/dashboard/Table/column-header";
 import {CellAction} from "./cell-action";
-import {CellView} from "@/components/Table/cell-view";
+import {CellView} from "@/components/dashboard/Table/cell-view";
 
 export let initial_columns_view:VisibilityState = {
     lang:true,

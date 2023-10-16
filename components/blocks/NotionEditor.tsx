@@ -63,7 +63,7 @@ import Tooltip from 'editorjs-tooltip';
 import Annotation from '../../dist/annotation'
 // @ts-ignore
 import Undo from 'editorjs-undo';
-import { Button } from "../ui/button";
+import { Button } from "../dashboard/ui/button";
 export const EDITOR_JS_TOOLS = {
     // NOTE: Paragraph is default tool. Declare only when you want to change paragraph option.
     paragraph: Paragraph,

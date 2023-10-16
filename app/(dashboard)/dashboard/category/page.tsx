@@ -1,6 +1,6 @@
 import { columns ,initial_columns_view } from "./components/columns"
 import { DataTable } from "@/components/data-table"
-import {TableHeader} from "@/components/Table/table-header";
+import {TableHeader} from "@/components/dashboard/Table/table-header";
 import {getData} from "./components/data";
 import {HeaderPage} from "@/app/(dashboard)/dashboard/category/components/header";
 

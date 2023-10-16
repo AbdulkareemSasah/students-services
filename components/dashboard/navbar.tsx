@@ -7,10 +7,10 @@ import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/dashboard/main-nav"
 import { MobileNav } from "@/components/dashboard/mobile-nav"
 import { ModeToggle } from "@/components/mode-toggle"
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/dashboard/ui/button"
 import {ThemeCustomizer} from "@/components/theme-customizer";
 import LanguageSwitcher from "@/components/lang-toggle";
-import {Button} from "@/components/ui/button";
+import {Button} from "@/components/dashboard/ui/button";
 import {Paintbrush} from "lucide-react";
 
 export function SiteHeader() {

@@ -1,10 +1,10 @@
 "use client"
 import React, {useRef, useState} from 'react';
 import { PlusIcon} from "@radix-ui/react-icons";
-import {Button} from "@/components/ui/button";
-import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
+import {Button} from "@/components/dashboard/ui/button";
+import {Popover, PopoverContent, PopoverTrigger} from "@/components/dashboard/ui/popover";
 import {DeleteIcon} from "lucide-react";
-import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/dashboard/ui/card";
 import {useTranslation} from "react-i18next";
 import NotionEditor from './NotionEditor';
 import QuillEditor from './quill/editor';
@@ -13,10 +13,12 @@ import {Editor as NovalEditor} from 'novel';
 import Editor from './editor';
 
 import { cellPlugins } from '@/plugins/cellPlugins';
+import QuillEditorJS from './quill/quilljs';
 
 const typeFields = [
     "notion editor",
-    // "quill text editor",
+    "quill text editor",
+    "quill js text editor"
     // "novel text editor"
 ]
 type Block = {
@@ -76,7 +78,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                                      />
                                     </>
                                 }
-                                {/*f === "quill text editor" &&
+                                {f === "quill text editor" &&
                                 <>
                                 <QuillEditor
                                         name={"editor"+index}
@@ -90,7 +92,15 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                                     />
                                 </>
                                     
-                                } */}
+                                }
+                                {f === "quill js text editor" &&
+                                <>
+                                <QuillEditorJS
+                                        
+                                    />
+                                </>
+                                    
+                                }
                                 {/* {f === "novel text editor" &&
                                 <>
                                     <NovalEditor 

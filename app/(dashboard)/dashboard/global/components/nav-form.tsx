@@ -1,21 +1,21 @@
 "use client"
 import React, {useContext, useEffect, useState} from 'react';
 import { useForm } from 'react-hook-form';
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
+import {Input} from "@/components/dashboard/ui/input";
+import {Button} from "@/components/dashboard/ui/button";
 import axios from "axios";
-import {LanguageContext} from "@/components/providers/language-provider";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
+import {LanguageContext} from "@/components/dashboard/providers/language-provider";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/dashboard/ui/card";
+import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/dashboard/ui/form";
 import {useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
 import {Check, ChevronsUpDown, Trash2Icon} from "lucide-react";
-import {Heading} from "@/components/ui/heading";
+import {Heading} from "@/components/dashboard/ui/heading";
 import {toast} from "react-hot-toast";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/dashboard/ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/dashboard/ui/popover';
 import { cn } from '@/lib/utils';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/dashboard/ui/command';
 import { NavbarItem, NavbarItemTranslation } from '@prisma/client';
 import { NavbarItemFormProps } from './type';
 

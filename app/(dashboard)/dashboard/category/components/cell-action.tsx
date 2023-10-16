@@ -5,14 +5,14 @@ import { useState } from "react";
 import {EditIcon, TrashIcon, ViewIcon,} from "lucide-react";
 import toast from 'react-hot-toast';
 import {useParams, useRouter} from "next/navigation";
-import { AlertModal } from "@/components/modals/alert-modal";
+import { AlertModal } from "@/components/dashboard/modals/alert-modal";
 
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/dashboard/ui/tooltip"
 import { CopyleftIcon } from "lucide-react";
 
 

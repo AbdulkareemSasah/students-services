@@ -1,18 +1,18 @@
 "use client"
 import React, {useContext, useEffect, useState} from 'react';
 import { useForm } from 'react-hook-form';
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
+import {Input} from "@/components/dashboard/ui/input";
+import {Button} from "@/components/dashboard/ui/button";
 import axios from "axios";
-import {LanguageContext} from "@/components/providers/language-provider";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Form, FormControl, FormItem, FormLabel} from "@/components/ui/form";
+import {LanguageContext} from "@/components/dashboard/providers/language-provider";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/dashboard/ui/card";
+import {Form, FormControl, FormItem, FormLabel} from "@/components/dashboard/ui/form";
 import {useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
 import {format} from "date-fns";
 import {Trash2Icon} from "lucide-react";
-import {Heading} from "@/components/ui/heading";
-import {AlertModal} from "@/components/modals/alert-modal";
+import {Heading} from "@/components/dashboard/ui/heading";
+import {AlertModal} from "@/components/dashboard/modals/alert-modal";
 import {toast} from "react-hot-toast";
 import { useParams } from 'next/navigation';
 

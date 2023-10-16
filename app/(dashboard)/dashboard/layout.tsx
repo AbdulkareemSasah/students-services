@@ -1,4 +1,4 @@
-import {LanguageProvider} from "@/components/providers/language-provider";
+import {LanguageProvider} from "@/components/dashboard/providers/language-provider";
 import { SiteHeader } from "@/components/dashboard/navbar";
 export default function DashboardLayout({children} : {children: React.ReactNode}) {
     return  (

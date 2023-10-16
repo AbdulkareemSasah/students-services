@@ -1,21 +1,21 @@
 "use client"
 import React, {useContext, useEffect, useMemo, useState} from 'react';
 import { useForm } from 'react-hook-form';
-import {Input} from "@/components/ui/input";
-import {Button} from "@/components/ui/button";
+import {Input} from "@/components/dashboard/ui/input";
+import {Button} from "@/components/dashboard/ui/button";
 import axios from "axios";
 import {z} from "zod"
-import {LanguageContext} from "@/components/providers/language-provider";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
-import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
+import {LanguageContext} from "@/components/dashboard/providers/language-provider";
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/dashboard/ui/card";
+import {Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage} from "@/components/dashboard/ui/form";
 import {useParams, useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
 import {format} from "date-fns";
 import {Check, ChevronsUpDown, Trash2Icon} from "lucide-react";
-import {Heading} from "@/components/ui/heading";
-import {AlertModal} from "@/components/modals/alert-modal";
+import {Heading} from "@/components/dashboard/ui/heading";
+import {AlertModal} from "@/components/dashboard/modals/alert-modal";
 import {toast} from "react-hot-toast";
-import {Checkbox} from "@/components/ui/checkbox";
+import {Checkbox} from "@/components/dashboard/ui/checkbox";
 import {
     Select,
     SelectContent,
@@ -24,13 +24,13 @@ import {
     SelectLabel,
     SelectTrigger,
     SelectValue
-} from "@/components/ui/select";
+} from "@/components/dashboard/ui/select";
 import {getTags} from "@/actions/get-tags";
 import { ItemType} from "@/actions/get-categories";
 import {zodResolver} from "@hookform/resolvers/zod";
-import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
+import {Popover, PopoverContent, PopoverTrigger} from "@/components/dashboard/ui/popover";
 import {cn} from "@/lib/utils";
-import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from "@/components/ui/command";
+import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from "@/components/dashboard/ui/command";
 import {Simulate} from "react-dom/test-utils";
 import error = Simulate.error;
 import DynamicForm from "@/components/blocks/dynamic";

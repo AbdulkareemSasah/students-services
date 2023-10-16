@@ -6,11 +6,11 @@ import { SessionProvider  } from 'next-auth/react';
 import type {Session} from "next-auth";
 import {I18nextProvider, useTranslation} from 'react-i18next'
 import i18next from "@/i18n.config";
-import {ThemeWrapper} from "@/components/theme-wrapper";
+import {ThemeWrapper} from "@/components/dashboard/theme-wrapper";
 import {useConfig} from "@/hooks/use-config";
 
 
-export default function Providers({children,session} : {
+export default function GlobalProviders({children,session} : {
     children: React.ReactNode,
     session?:Session | null
 }) {
@@ -21,9 +21,7 @@ export default function Providers({children,session} : {
                 <body>
                 <I18nextProvider i18n={i18next}>
                     <SessionProvider session={session}>
-                        <ThemeWrapper defaultTheme={config.theme}>
                             {children}
-                        </ThemeWrapper>
                     </SessionProvider>
                 </I18nextProvider>
                 </body>

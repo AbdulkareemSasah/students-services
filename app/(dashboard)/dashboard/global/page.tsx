@@ -1,5 +1,5 @@
 import GlobalForm from "./components/global-form";
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/dashboard/ui/button"
 import {
     Card,
     CardContent,
@@ -7,16 +7,16 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
+} from "@/components/dashboard/ui/card"
 import prismadb from "@/lib/prisma";
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Input } from "@/components/dashboard/ui/input"
+import { Label } from "@/components/dashboard/ui/label"
 import {
     Tabs,
     TabsContent,
     TabsList,
     TabsTrigger,
-} from "@/components/ui/tabs"
+} from "@/components/dashboard/ui/tabs"
 import NavbarClient from "./components/nav-client";
 import DropDownItemClient from "./components/dropdown-item-client";
 import DropDownGroupClient from "./components/dropdown-group-client";

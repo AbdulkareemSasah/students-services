@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation"
 import { dashboardConfig } from "@/config/dashboard"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/dashboard/ui/badge"
 
 export function MainNav() {
   const pathname = usePathname()
