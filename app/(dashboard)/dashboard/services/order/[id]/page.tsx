@@ -1,4 +1,5 @@
 import ItemForm from "../components/item-form";
+import prisma from "@/lib/prisma";
 import { Button } from "@/components/dashboard/ui/button"
 import {
     Card,
@@ -16,12 +17,13 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/dashboard/ui/tabs"
-import prismadb from "@/lib/prisma";
+import { getTags } from "@/actions/get-tags";
+import { getCategories } from "@/actions/get-categories";
 
 
 
 const CategoryServicePage = async ({params}: {params: { id: string }}) => {
-    const categoryService = await prismadb.categoryService.findUnique({
+    const categoryService = await prisma.categoryService.findUnique({
         where: {
             id: params.id
         },

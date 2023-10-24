@@ -42,13 +42,12 @@ type Block = {
 
 type Translation = {
     id?:string,
-    slug:string,
     lang: string,
-    title:string,
+    name:string,
     author: {
         email: string
     },
-    description: string,
+    descriprion: string,
     blocks:Block[],
     published:boolean,
 };
@@ -56,10 +55,9 @@ type Translation = {
 interface formatedTranslation  {
     [language: string]: {
         id?:string,
-        slug:string,
-        title: string,
+        name: string,
         published:boolean,
-        description: string,
+        descriprion: string,
         lang:string
         author: {
             email: string;
@@ -74,10 +72,9 @@ const BlockSchema = z.object({
 });
 const formatedTranslationSchema = z.record(
     z.object({
-        slug: z.string(),
-        title: z.string(),
+        name: z.string(),
         published: z.boolean(),
-        description: z.string(),
+        descriprion: z.string(),
         lang: z.string(),
         author: z.object({
             email: z.string(),
@@ -92,10 +89,9 @@ export function formatTranslation(translations: Translation[]): formatedTranslat
     translations.forEach((item) => {
         const {
             id,
-            slug,
-            title,
+            name,
             published,
-            description,
+            descriprion,
             lang,
             author,
             blocks
@@ -105,10 +101,9 @@ export function formatTranslation(translations: Translation[]): formatedTranslat
             result[lang] = {
                 id,
                 published,
-                slug,
-                title,
+                name,
                 lang,
-                description,
+                descriprion,
                 author,
                 blocks,
             };
@@ -127,20 +122,18 @@ function convertToTranslationArray(translationObject: formatedTranslation): Tran
             const {
                 id,
                 published,
-                slug,
-                title,
-                description,
+                name,
+                descriprion,
                 author,
                 blocks
             } = translationObject[lang];
 
             result.push({
                 id,
-                title,
-                description,
+                name,
+                descriprion,
                 lang,
                 author,
-                slug,
                 published,
                 blocks
             });
@@ -151,43 +144,35 @@ function convertToTranslationArray(translationObject: formatedTranslation): Tran
 }
 
 type FormValues = {
-    tags: string[],
-    categoryId: string,
     translations: formatedTranslation
 };
 
 const FormValuesSchema = z.object({
-    tags: z.array(z.string()),
-    categoryId: z.string(),
     translations: formatedTranslationSchema,
 });
 
 
 
-interface ArticleFormProps {
+interface CategoryFormProps {
     initialData?: {
-        tags:string[],
-        categoryId:string,
         translations: any[]
-    },
-    tags:ItemType[],
-    categories:ItemType[]
+    }
 }
-const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories}) => {
+const ItemForm : React.FC<CategoryFormProps> = ({initialData}) => {
     const { selectedLang } = useContext(LanguageContext);
     const params = useParams()
     const {i18n,t} = useTranslation()
     const router = useRouter()
-    const name = "article"
+    const name = "categoryService"
     const head = {
-        title: initialData ? initialData.translations.find(t => t.lang === selectedLang)?.title :t(`article.create.title`),
-        description : initialData ? initialData.translations.find(t => t.lang === selectedLang)?.description :t(`article.create.description`),
+        title: initialData ? initialData.translations.find(t => t.lang === selectedLang)?.name :t(`categoryService.create.title`),
+        description : initialData ? initialData.translations.find(t => t.lang === selectedLang)?.description :t(`categoryService.create.description`),
     };
-    const title = initialData ? t(`article.edit.title`) :t(`article.create.title`);
-    const description = initialData ? t(`article.edit.description`) :t(`article.create.description`);
+    const title = initialData ? t(`categoryService.edit.title`) :t(`categoryService.create.title`);
+    const description = initialData ? t(`categoryService.edit.description`) :t(`categoryService.create.description`);
     const toastMessage = {
-        success : initialData ? t(`article.toast.update.success`) : t(`article.toast.create.success`),
-        error : initialData ? t(`article.toast.update.error`) : t(`article.toast.create.error`),
+        success : initialData ? t(`categoryService.toast.update.success`) : t(`categoryService.toast.create.success`),
+        error : initialData ? t(`categoryService.toast.update.error`) : t(`categoryService.toast.create.error`),
     };
     const action = initialData ? t('Save changes') : t('Create')
     const [loading, setLoading] = useState(false);
@@ -198,19 +183,14 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
     const [languages , setLanguages] = useState<(any)[]>([])
     const initialDataAfter = initialData && formatTranslation(initialData.translations)
     const defaultValues = initialData ? {
-        tags:initialData.tags,
-        categoryId:initialData.categoryId,
         translations: initialDataAfter,
     } : {
-        tags: [],
-        categoryId: "",
         translations: {
             ar: {
                 published: false,
-                slug: "",
-                title: "",
+                name: "",
                 lang: "ar",
-                description: "",
+                descriprion: "",
                 author: {
                     email: ""
                 },
@@ -218,10 +198,9 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
             },
             en: {
                 published: false,
-                slug: "",
-                title: "",
+                name: "",
                 lang: "en",
-                description: "",
+                descriprion: "",
                 author: {
                     email: ""
                 },
@@ -233,7 +212,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
         resolver: zodResolver(FormValuesSchema),
         defaultValues
     });
-    const { handleSubmit, register, formState: { errors } } = form
+    const { handleSubmit, formState: { errors } } = form
     useEffect( ()=> {
         axios.get("/api/language")
             .then(data => data.data)
@@ -260,13 +239,11 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
         setLoading(true)
         const formData = {
             translations : convertToTranslationArray(form.getValues().translations),
-            tags:form.getValues().tags,
-            categoryId:form.getValues().categoryId
             };
 
         const isTranslationsEmpty = formData.translations.every((t) => {
             return (
-                !t.title.trim()
+                !t.name.trim()
             );
         });
         if (isTranslationsEmpty) {
@@ -278,7 +255,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
         setIsFormEmpty(false);
         if (initialData) {
             try {
-                const response = await fetch(`/api/article/${params?.id}`, {
+                const response = await fetch(`/api/categoryService/${params?.id}`, {
                     method: 'PATCH',
                     body: JSON.stringify(formData),
                     headers: {
@@ -286,7 +263,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                     },
                 });
                 if (response.ok) {
-                    router.push(`/dashboard/article/${params?.id}#view`)
+                    router.push(`/dashboard/services/category/${params?.id}#view`)
                     toast.success(toastMessage.success);
                 } else {
                     setLoading(false)
@@ -304,7 +281,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
 
         }else  {
             try {
-                const response = await fetch(`/api/article`, {
+                const response = await fetch(`/api/categoryService`, {
                     method: 'POST',
                     body: JSON.stringify(formData),
                     headers: {
@@ -313,7 +290,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                 });
                 if (response.ok) {
                     form.reset()
-                    router.push(`/dashboard/article`)
+                    router.push(`/dashboard/services/category`)
                     toast.success(toastMessage.success);
                 } else {
                     setLoading(false)
@@ -330,44 +307,15 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
         }
 
     };
-    async function generateNewTagId({name}: {name:string}) {
-        console.log(name)
-        try {
-            setLoading(true)
-            const response = await fetch('/api/tag', {
-                method: 'POST',
-                body: JSON.stringify({name:name}),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            if (response.ok) {
-                form.reset()
-                setLoading(false)
-                let res = await response.json()
-                toast.success(t("tag.toast.create.success"));
-                return res.id
-            } else {
-                setLoading(false)
-                console.error('Failed to submit data');
-                toast.error(t("tag.toast.create.error"));
-                return undefined
-            }
-        } catch (err) {
-            console.error(err)
-            return undefined
-        }
-
-    }
     const onDelete = async () => {
         try {
             setLoading(true);
-            await axios.delete(`/api/article/${params?.id}`);
+            await axios.delete(`/api/categoryService/${params?.id}`);
             router.refresh();
-            router.push(`/dashboard/article`);
-            toast.success(t(`article.toast.delete.success`));
+            router.push(`/dashboard/services/category`);
+            toast.success(t(`categoryService.toast.delete.success`));
         } catch (error: any) {
-            toast.error(t(`article.toast.delete.error`));
+            toast.error(t(`categoryService.toast.delete.error`));
         } finally {
             setLoading(false);
             setOpen(false);
@@ -415,12 +363,12 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                                     <div key={l.language} className={selectedLang === l.language ? "gap-y-3" : "hidden"}>
                                         <FormField
                                             control={form.control}
-                                            name={`translations.${l.language}.title`}
+                                            name={`translations.${l.language}.name`}
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>{t(`article.form.title.label`)}</FormLabel>
+                                                    <FormLabel>{t(`categoryService.form.name.label`)}</FormLabel>
                                                     <FormControl>
-                                                        <Input disabled={loading} placeholder={t("article.form.title.placeholder")} {...field} />
+                                                        <Input disabled={loading} placeholder={t("categoryService.form.name.placeholder")} {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
@@ -440,30 +388,18 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                                         />
                                         <FormField
                                             control={form.control}
-                                            name={`translations.${l.language}.description`}
+                                            name={`translations.${l.language}.descriprion`}
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>{t(`article.form.description.label`)}</FormLabel>
+                                                    <FormLabel>{t(`categoryService.form.description.label`)}</FormLabel>
                                                     <FormControl>
-                                                        <Input disabled={loading} placeholder={t(`article.form.description.placeholder`)} {...field} />
+                                                        <Input disabled={loading} placeholder={t(`categoryService.form.description.placeholder`)} {...field} />
                                                     </FormControl>
                                                     <FormMessage />
                                                 </FormItem>
                                             )}
                                         />
-                                        <FormField
-                                            control={form.control}
-                                            name={`translations.${l.language}.slug`}
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>{t(`article.form.slug.label`)}</FormLabel>
-                                                    <FormControl>
-                                                        <Input disabled={loading} placeholder={t(`article.form.slug.placeholder`)} {...field} />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
+            
                                         <FormField
                                             control={form.control}
                                             name={`translations.${l.language}.published`}
@@ -478,10 +414,10 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                                                     </FormControl>
                                                     <div className="space-y-1 leading-none px-3">
                                                         <FormLabel>
-                                                        {t(`article.form.published.label`)}
+                                                        {t(`categoryService.form.published.label`)}
                                                         </FormLabel>
                                                         <FormDescription>
-                                                        {t(`article.form.published.description`)}
+                                                        {t(`categoryService.form.published.description`)}
                                                         </FormDescription>
                                                     </div>
                                                 </FormItem>
@@ -493,7 +429,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                                             name={`translations.${l.language}.blocks`}
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel>{t("article.form.blocks.label")}</FormLabel>
+                                                    <FormLabel>{t("categoryService.form.blocks.label")}</FormLabel>
                                                     <DynamicForm
                                                         field={field}
                                                         loading={loading}
@@ -504,110 +440,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                                     </div>
                                 );
                             })}
-                            <FormField
-                                            control={form.control}
-                                            name={`tags`}
-                                            render={({ field }) => (
-                                                <FormItem className="flex flex-col">
-                                                    <FormLabel>{t(`article.form.tags.label`)}</FormLabel>
-                                                    <Popover>
-                                                        <PopoverTrigger asChild>
-                                                            <FormControl>
-                                                                <Button
-                                                                    variant="outline"
-                                                                    role="combobox"
-                                                                    className={cn(
-                                                                        "w-[200px] justify-between",
-                                                                        !field.value && "text-muted-foreground"
-                                                                    )}
-                                                                >
-                                                                    {field.value
-                                                                        ? field.value.length + " Selected"
-                                                                        : "Select language"}
-                                                                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                                                </Button>
-                                                            </FormControl>
-                                                        </PopoverTrigger>
-                                                        <PopoverContent className="w-[200px] p-0">
-                                                            <Command>
-                                                                <CommandInput
-                                                                    placeholder={t(`article.form.tag.search.placeholder`)}
-                                                                    onKeyDown={async (event) => {
-                                                                        if (event.key === 'Enter') {
-                                                                            // @ts-ignore
-                                                                            const inputValue = event.target?.value;
-                                                                            const matchingTag = tags.find(
-                                                                                (t) => t[selectedLang].name.toLowerCase() === inputValue.toLowerCase()
-                                                                            );
-
-                                                                            if (matchingTag) {
-                                                                                const selectedIds = Array.isArray(field.value) ? field.value : [];
-                                                                                form.setValue(`tags`, [...selectedIds, matchingTag[selectedLang].id]);
-                                                                            } else {
-                                                                                const newTagId = await generateNewTagId({name : inputValue})
-                                                                                if (newTagId) {
-                                                                                    const selectedIds = Array.isArray(field.value) ? field.value : [];
-                                                                                    form.setValue(`tags`, [...selectedIds, newTagId]);
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }}
-                                                                />
-                                                                <CommandEmpty>{t("article.form.tag.empty")}</CommandEmpty>
-                                                                <CommandGroup>
-                                                                    {tags.map((t) => (
-                                                                        <CommandItem
-                                                                            value={t[selectedLang].id}
-                                                                            key={t[selectedLang].id}
-                                                                            onSelect={() => {
-                                                                                const selectedIds = Array.isArray(field.value) ? field.value : [];
-                                                                                form.setValue(`tags`, [...selectedIds, t[selectedLang].id]);
-                                                                            }}
-                                                                        >
-                                                                            <Check
-                                                                                className={cn(
-                                                                                    "mr-2 h-4 w-4",
-                                                                                    Array.isArray(field.value) && field.value.includes(t[selectedLang].id)
-                                                                                        ? "opacity-100"
-                                                                                        : "opacity-0"
-                                                                                )}
-                                                                            />
-                                                                            {t[selectedLang].name}
-                                                                        </CommandItem>
-                                                                    ))}
-                                                                </CommandGroup>
-                                                            </Command>
-                                                        </PopoverContent>
-                                                    </Popover>
-                                                    <FormDescription>
-                                                        {t("article.form.tag.description")}
-                                                    </FormDescription>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name={`categoryId`}
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel>{t("article.form.category.label")}</FormLabel>
-                                                    <Select disabled={loading} onValueChange={field.onChange} value={field.value} defaultValue={field.value}>
-                                                        <FormControl>
-                                                            <SelectTrigger className='w-fit min-w-[8em]'>
-                                                                <SelectValue defaultValue={field.value} placeholder={t("article.form.category.placeholder")} />
-                                                            </SelectTrigger>
-                                                        </FormControl>
-                                                        <SelectContent className='w-fit min-w-[8em]'>
-                                                            {categories.map((color) => (
-                                                                <SelectItem key={color[selectedLang]?.id} value={color[selectedLang]?.id}>{color[selectedLang]?.name}</SelectItem>
-                                                            ))}
-                                                        </SelectContent>
-                                                    </Select>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
+                        
 
                             {isFormEmpty && <p>يرجى ملء جميع الحقول اللغوية</p>}
                         </CardContent>

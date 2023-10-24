@@ -1,4 +1,5 @@
 import ItemForm from "../components/item-form";
+import prisma from "@/lib/prisma";
 import { Button } from "@/components/dashboard/ui/button"
 import {
     Card,
@@ -16,12 +17,24 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/dashboard/ui/tabs"
+import { getTags } from "@/actions/get-tags";
+import { getCategories } from "@/actions/get-categories";
 import prismadb from "@/lib/prisma";
 
 
 
-const CategoryServicePage = async ({params}: {params: { id: string }}) => {
-    const categoryService = await prismadb.categoryService.findUnique({
+const CommentEditViewPage = async ({params}: {params: { id: string }}) => {
+    const articles = await prismadb.article.findMany({
+        select: {
+            translations: {
+                select: {
+                    lang:true,
+                    title: true
+                }
+            }
+        }
+    })
+    const comment = await prismadb.comment.findUnique({
         where: {
             id: params.id
         },
@@ -32,26 +45,24 @@ const CategoryServicePage = async ({params}: {params: { id: string }}) => {
                     id:true,
                     lang: true,
                     name:true,
-                    published:true,
-                    blocks:{
-                        select:{
-                            id:true,
-                            type:true,
-                            content:true
+                    body:true,  
+                    author: {
+                        select: {
+                            name:true
                         }
                     },
-                    descriprion: true,
                     createdAt: true,
                     updatedAt: true
                 }
             },
+            articleId:true,
             createdAt: true,
             updatedAt: true,
         }
     });
 
     let initialData = {
-        translations: categoryService?.translations
+        translations: comment?.translations
     }
 
     return (
@@ -86,10 +97,10 @@ const CategoryServicePage = async ({params}: {params: { id: string }}) => {
             </TabsContent>
             <TabsContent id={"edit"}  value="edit">
                 {/* @ts-ignore */}
-                <ItemForm initialData={initialData} />
+                <ItemForm initialData={initialData} articles={articles} />
             </TabsContent>
         </Tabs>
     )
 }
 
-export default CategoryServicePage
+export default CommentEditViewPage

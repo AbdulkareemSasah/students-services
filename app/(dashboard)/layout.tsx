@@ -19,9 +19,9 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
     return (
-        <>
-        <ThemeWrapper>
+        
             <GlobalProviders>
+        <ThemeWrapper>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
@@ -32,8 +32,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <ThemeSwitcher />
                 <Analytics />
                 <Toaster />
-            </GlobalProviders>
         </ThemeWrapper>
-        </>
+            </GlobalProviders>
+        
     )
 }

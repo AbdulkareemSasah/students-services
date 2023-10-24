@@ -18,6 +18,9 @@ generator client {
 //   isGenerateInclude = true
 // }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -37,6 +40,9 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
@@ -45,6 +51,9 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model User {
   id            String                @id @default(cuid())
   name          String?
@@ -69,6 +78,9 @@ enum Role {
   SUPERUSER
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model VerificationToken {
   identifier String
   token      String   @unique
@@ -77,6 +89,9 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Language {
   id                 String                       @id @default(uuid())
   label              String
@@ -97,14 +112,19 @@ model Language {
   groupFooters       GroupFooterTranslation[]
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Global {
   id           String              @id @default(uuid())
   translations GlobalTranslation[]
-  socialLinks  SocialLink[]
   createdAt    DateTime            @default(now())
   updatedAt    DateTime            @updatedAt
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model GlobalTranslation {
   id          String   @id @default(uuid())
   language    Language @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -124,16 +144,21 @@ model GlobalTranslation {
   @@index([lang])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model SocialLink {
-  id       String  @id @default(uuid())
-  social   String
-  url      String
-  global   Global? @relation(fields: [globalId], references: [id], onDelete: Cascade)
-  globalId String?
+  id     String @id @default(uuid())
+  social String
+  url    String
 
-  @@index([globalId])
+  @@unique([social])
+  @@index([social])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model NavbarItem {
   id             String                  @id @unique @default(uuid())
   translations   NavbarItemTranslation[]
@@ -153,6 +178,9 @@ model NavbarItem {
   @@unique([pageId, articleId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model NavbarItemTranslation {
   id           String      @id @default(uuid())
   name         String
@@ -168,6 +196,9 @@ model NavbarItemTranslation {
   @@index([navbarItemId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model DropDownGroup {
   id            String                     @id @default(uuid())
   translations  DropDownGroupTranslation[]
@@ -181,6 +212,9 @@ model DropDownGroup {
   @@index([navItemId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model DropDownGroupTranslation {
   id              String         @id @default(uuid())
   name            String
@@ -196,6 +230,9 @@ model DropDownGroupTranslation {
   @@index([dropdownGroupId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model DropdownItem {
   id           String                    @id @unique @default(uuid())
   translations DropdownItemTranslation[]
@@ -220,6 +257,9 @@ model DropdownItem {
   @@index([articleId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model DropdownItemTranslation {
   id             String        @id @default(uuid())
   name           String
@@ -235,6 +275,9 @@ model DropdownItemTranslation {
   @@index([dropdownItemId])
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Footer {
   id           String              @id @default(uuid())
   translations FooterTranslation[]
@@ -244,6 +287,9 @@ model Footer {
   updatedAt    DateTime            @updatedAt
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model FooterTranslation {
   id        String   @id @default(uuid())
   language  Language @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -258,6 +304,9 @@ model FooterTranslation {
   @@index([lang])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model GroupFooter {
   id           String                   @id @default(uuid())
   translations GroupFooterTranslation[]
@@ -272,6 +321,9 @@ model GroupFooter {
   @@index([footerId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model GroupFooterTranslation {
   id            String       @id @default(uuid())
   title         String?
@@ -287,6 +339,9 @@ model GroupFooterTranslation {
   @@index([groupfooterId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Page {
   id            String            @id @unique @default(uuid())
   translations  PageTranslation[]
@@ -301,6 +356,9 @@ model Page {
   @@index([groupFooterId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model PageTranslation {
   id          String   @id @default(uuid())
   language    Language @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -323,6 +381,9 @@ model PageTranslation {
   @@index([lang])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Category {
   id           String                @id @default(uuid())
   translations CategoryTranslation[]
@@ -332,6 +393,9 @@ model Category {
   active       Boolean               @default(false)
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model CategoryTranslation {
   id          String   @id @default(uuid())
   language    Language @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -351,6 +415,9 @@ model CategoryTranslation {
   @@index([lang])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Article {
   id            String               @id @unique @default(uuid())
   translations  ArticleTranslation[]
@@ -368,6 +435,9 @@ model Article {
   dropdownItem  DropdownItem?
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model ArticleTranslation {
   id          String   @id @default(uuid())
   language    Language @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -390,6 +460,9 @@ model ArticleTranslation {
   @@index([lang])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Tag {
   id           String           @id @default(uuid())
   translations TagTranslation[]
@@ -399,6 +472,9 @@ model Tag {
   active       Boolean          @default(false)
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model TagTranslation {
   id        String   @id @default(uuid())
   language  Language @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -414,6 +490,9 @@ model TagTranslation {
   @@index([lang])
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Comment {
   id           String               @id @default(uuid())
   translations CommentTranslation[]
@@ -423,6 +502,9 @@ model Comment {
   updatedAt    DateTime             @updatedAt
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model CommentTranslation {
   id        String   @id @default(uuid())
   language  Language @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -442,6 +524,9 @@ model CommentTranslation {
   @@index([lang])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Block {
   id                String                      @id @default(uuid())
   type              String?
@@ -459,6 +544,9 @@ model Block {
   active            Boolean                     @default(false)
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model CategoryService {
   id           String                       @id @default(uuid())
   services     Service[]
@@ -469,6 +557,9 @@ model CategoryService {
   active       Boolean                      @default(false)
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model CategoryServiceTranslation {
   id                String          @id @default(uuid())
   language          Language        @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -486,6 +577,9 @@ model CategoryServiceTranslation {
   @@unique([lang, categoryServiceId])
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Service {
   id              String               @id @default(uuid())
   CategoryService CategoryService      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
@@ -497,6 +591,9 @@ model Service {
   active          Boolean              @default(false)
 }
 
+// API : DONE
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model ServiceTranslation {
   id          String   @id @default(uuid())
   language    Language @relation(fields: [lang], references: [language], onDelete: Cascade)
@@ -512,6 +609,9 @@ model ServiceTranslation {
   @@unique([lang, serviceId])
 }
 
+// API : PROGRES
+// DASHBOARD : PROGRES
+// SITE : PROGRES
 model Order {
   id                      String   @id @default(uuid())
   name                    String?

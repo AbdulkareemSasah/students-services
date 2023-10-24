@@ -45,6 +45,11 @@ export const dashboardConfig = {
       items: [],
     },
     {
+      title: "Comment",
+      href: "/dashboard/comment",
+      items: [],
+    },
+    {
       title: "Category",
       href: "/dashboard/services/category",
       items: [],

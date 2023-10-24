@@ -34,38 +34,13 @@ import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem} from "@/
 import {Simulate} from "react-dom/test-utils";
 import error = Simulate.error;
 import DynamicForm from "@/components/blocks/dynamic";
-type Block = {
-    id?:string,
-    type: string,
-    content: string
-}
+import { ArticleProps, ArticleTranslationProps } from './types';
 
-type Translation = {
-    id?:string,
-    slug:string,
-    lang: string,
-    title:string,
-    author: {
-        email: string
-    },
-    description: string,
-    blocks:Block[],
-    published:boolean,
-};
+
+
 
 interface formatedTranslation  {
-    [language: string]: {
-        id?:string,
-        slug:string,
-        title: string,
-        published:boolean,
-        description: string,
-        lang:string
-        author: {
-            email: string;
-        },
-        blocks : Block[],
-    },
+    [language: string]: ArticleTranslationProps
 
 }
 const BlockSchema = z.object({
@@ -79,14 +54,12 @@ const formatedTranslationSchema = z.record(
         published: z.boolean(),
         description: z.string(),
         lang: z.string(),
-        author: z.object({
-            email: z.string(),
-        }),
+        userId: z.string(),
         blocks: z.array(BlockSchema), // تحتاج إلى تحديد مخطط للكتلة (Block)
     })
 );
 
-export function formatTranslation(translations: Translation[]): formatedTranslation {
+export function formatTranslation(translations: ArticleTranslationProps[]): formatedTranslation {
     const result: formatedTranslation = {};
 
     translations.forEach((item) => {
@@ -97,8 +70,12 @@ export function formatTranslation(translations: Translation[]): formatedTranslat
             published,
             description,
             lang,
-            author,
-            blocks
+            userId,
+            blocks,
+            articleId,
+            createdAt,
+            images,
+            updatedAt
         } = item;
 
         if (!result[lang]) {
@@ -109,8 +86,12 @@ export function formatTranslation(translations: Translation[]): formatedTranslat
                 title,
                 lang,
                 description,
-                author,
+                userId,
                 blocks,
+                articleId,
+                createdAt,
+                images,
+                updatedAt
             };
         }
     });
@@ -119,8 +100,8 @@ export function formatTranslation(translations: Translation[]): formatedTranslat
 
 }
 
-function convertToTranslationArray(translationObject: formatedTranslation): Translation[] {
-    const result: Translation[] = [];
+function convertToTranslationArray(translationObject: formatedTranslation): ArticleTranslationProps[] {
+    const result: ArticleTranslationProps[] = [];
 
     for (const lang in translationObject) {
         if (translationObject.hasOwnProperty(lang)) {
@@ -130,19 +111,27 @@ function convertToTranslationArray(translationObject: formatedTranslation): Tran
                 slug,
                 title,
                 description,
-                author,
-                blocks
+                userId,
+                blocks,
+                articleId,
+                createdAt,
+                images,
+                updatedAt
             } = translationObject[lang];
 
             result.push({
                 id,
-                title,
-                description,
-                lang,
-                author,
-                slug,
                 published,
-                blocks
+                slug,
+                title,
+                lang,
+                description,
+                userId,
+                blocks,
+                articleId,
+                createdAt,
+                images,
+                updatedAt
             });
         }
     }
@@ -151,10 +140,8 @@ function convertToTranslationArray(translationObject: formatedTranslation): Tran
 }
 
 type FormValues = {
-    tags: string[],
-    categoryId: string,
-    translations: formatedTranslation
-};
+    tags: string[]
+} & ArticleProps
 
 const FormValuesSchema = z.object({
     tags: z.array(z.string()),
@@ -168,12 +155,12 @@ interface ArticleFormProps {
     initialData?: {
         tags:string[],
         categoryId:string,
-        translations: any[]
+        translations: ArticleTranslationProps[]
     },
     tags:ItemType[],
     categories:ItemType[]
 }
-const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories}) => {
+const ItemForm : React.FC<ArticleFormProps> = ({initialData, tags, categories}) => {
     const { selectedLang } = useContext(LanguageContext);
     const params = useParams()
     const {i18n,t} = useTranslation()
@@ -199,7 +186,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
     const initialDataAfter = initialData && formatTranslation(initialData.translations)
     const defaultValues = initialData ? {
         tags:initialData.tags,
-        categoryId:initialData.categoryId,
+        categoryId: initialData.categoryId,
         translations: initialDataAfter,
     } : {
         tags: [],
@@ -211,9 +198,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                 title: "",
                 lang: "ar",
                 description: "",
-                author: {
-                    email: ""
-                },
+                userId: "",
                 blocks: []
             },
             en: {
@@ -222,9 +207,7 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                 title: "",
                 lang: "en",
                 description: "",
-                author: {
-                    email: ""
-                },
+                userId: "",
                 blocks: []
             }
         }
@@ -241,16 +224,6 @@ const ItemForm : React.FC <ArticleFormProps> = ({initialData, tags, categories})
                 setLanguages(lang)
             }).catch(err => {
                 console.error(err)
-                setLanguages([
-                    {
-                        label : "English",
-                        language: "en"
-                    },
-                    {
-                        label : "العربية",
-                        language: "ar"
-                    },
-                ])
         })
 
 
