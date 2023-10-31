@@ -1,30 +1,70 @@
 import prismadb from "@/lib/prisma"
 
-const getSiteData =async () => {
-  const global = await prismadb.global.findFirst({
-    include: {
-      socialLinks:true,
-      translations:true,
-    }
-  })
-  // const navitems = await prismadb.navbarItem.findMany({
-  //   include :{
-  //     dropdownGroups:{
-  //       select: {
-  //         translations: {
-  //           include: {
-  //             name:true
-  //           }
-  //         }
-  //       }
-  //     },
-  //     dropdownItems:true,
-  //     article:true,
-  //     page:true,
-  //     translations:true,
-  //   }
-  // })
-}
+// const getSiteData =async () => {
+//   const global = await prismadb.global.findFirst({
+//     include: {
+//       translations:true,
+//     }
+//   })
+//   const navitems = await prismadb.navbarItem.findMany({
+//     include :{
+//       dropdownGroups:{
+//         select: {
+//           dropdownItems:{
+//             where: {
+//               active:true
+//             },
+//             select: {
+//               forPage:true,
+//               pageId:true,
+//               forArticle:true,
+//               articleId:true,
+//               forGroup:true,
+//               groupId:true,
+//               translations: {
+//                 select: {
+//                   name:true,
+//                   lang:true
+//                 }
+//               }
+//             }
+//           },
+//           translations: {
+//             select: {
+//               name:true,
+//               lang:true,
+//             }
+//           }
+//         }
+//       },
+//       dropdownItems:{
+//         where: {
+//           active:true
+//         },
+//         select: {
+//           forPage:true,
+//           pageId:true,
+//           forArticle:true,
+//           articleId:true,
+//           forGroup:true,
+//           groupId:true,
+//           translations: {
+//             select: {
+//               name:true,
+//               lang:true
+//             }
+//           }
+//         }
+//       },
+//       article:true,
+//       page:true,
+//       translations:true,
+//     }
+//   })
+  
+//   return {global ,navitems}
+// }
+
 
 export const siteConfig = {
   name: "shadcn/ui",

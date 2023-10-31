@@ -11,13 +11,13 @@ export default function DropDownItemClient({navbarItems,pages, articles, dropdow
     const { selectedLang } = useContext(LanguageContext);
 
     return (
-        
+        <div className="flex justify-center items-center container">
                 <Tabs defaultValue={dropdownItems.length>0 ? dropdownItems[0]?.id : "create"} className="w-full">
-                    <TabsList className={`flex flex-row w-fit  mx-auto`}>
+                    <TabsList className={`container mx-auto`}>
                         {dropdownItems.map(nav => (
-                                <TabsTrigger value={nav.id} key={nav.id} className={"px-5"}>{nav?.translations?.find(e => e.lang === selectedLang)?.name}</TabsTrigger>
+                                <TabsTrigger value={nav.id} key={nav.id} >{nav?.translations?.find(e => e.lang === selectedLang)?.name}</TabsTrigger>
                         ))}
-                        <TabsTrigger value="create" className={"px-5"}>Create</TabsTrigger>
+                        <TabsTrigger value="create" >Create</TabsTrigger>
                     </TabsList>
                     {dropdownItems.map(nav => (
                                 <TabsContent id={nav.id} key={nav.id}  value={nav.id}>
@@ -39,7 +39,9 @@ export default function DropDownItemClient({navbarItems,pages, articles, dropdow
                                             articles={articles}       
                     />
                     </TabsContent>
+
                 </Tabs>
+                </div>
            
     )
 }

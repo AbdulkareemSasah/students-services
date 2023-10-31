@@ -5,6 +5,29 @@ import prismadb from "@/lib/prisma";
 export  async  function  GET(req:NextRequest) {
     let query = req.nextUrl.searchParams
     if(query.get("take") === "all") {
+        if(query.get("for") === "short") {
+            const items = await prismadb.tag.findMany({
+                orderBy:{ 
+                    articles:{
+                        _count:"asc"
+                    }
+                },
+                select:{
+                    translations:{
+                        select:{
+                            name:true,
+                            lang:true
+                        }
+                    },
+                    _count:{
+                        select: {
+                            articles:true
+                        }
+                    }
+                }
+            })
+            if (items) return NextResponse.json(items)
+        }
         const items = await prismadb.tag.findMany({
             include:{
                 translations:true,

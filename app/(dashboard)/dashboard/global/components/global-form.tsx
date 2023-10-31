@@ -209,7 +209,7 @@ const GlobalForm = ({initialData }:CategoryFormProps) => {
     };
 
     return (
-        <div dir={i18n.language === "ar" ? "rtl" : "ltr"} className={"space-y-8 w-full"}>
+        <div dir={i18n.language === "ar" ? "rtl" : "ltr"} className={"container mx-auto space-y-8 max-w-sm"}>
         
             <div className="flex items-center justify-between">
                 <Heading

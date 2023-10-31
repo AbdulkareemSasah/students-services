@@ -7,6 +7,7 @@ module.exports = {
   content: [
       "app/dashboard/*.{ts,tsx}",
       "components/dashboard/**/*.{ts,tsx}",
+      "components/blocks/**/*.{ts,tsx}",
       "registry/**/*.{ts,tsx}",
       "node_modules/@editorjs/**/*.css"
   ],

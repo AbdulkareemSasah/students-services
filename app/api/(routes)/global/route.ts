@@ -3,11 +3,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req:NextRequest) {
     const global = await prismadb.global.findFirst({
-        include :{
-            translations: true
+        include: {
+            translations:true
         }
     })
     if(global) return NextResponse.json(global)
+      
     return NextResponse.json({error: "Server Error"}, {status : 501})
 }
 

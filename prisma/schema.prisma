@@ -351,7 +351,7 @@ model Page {
   groupFooterId String?
   createdAt     DateTime          @default(now())
   updatedAt     DateTime          @updatedAt
-  active        Boolean           @default(false)
+  published     Boolean           @default(false)
 
   @@index([groupFooterId])
 }
@@ -402,7 +402,7 @@ model CategoryTranslation {
   lang        String
   author      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
-  name        String
+  name        String   @unique
   description String?
   images      String[]
   category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
@@ -433,6 +433,7 @@ model Article {
   groupfooterId String?
   navbarItem    NavbarItem?
   dropdownItem  DropdownItem?
+  published     Boolean              @default(false)
 }
 
 // API : DONE
@@ -444,7 +445,7 @@ model ArticleTranslation {
   lang        String
   author      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String
-  slug        String?
+  slug        String?  @unique
   published   Boolean  @default(false)
   title       String?
   description String?
@@ -481,7 +482,7 @@ model TagTranslation {
   lang      String
   tag       Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
   tagId     String
-  name      String
+  name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -564,7 +565,7 @@ model CategoryServiceTranslation {
   id                String          @id @default(uuid())
   language          Language        @relation(fields: [lang], references: [language], onDelete: Cascade)
   lang              String
-  name              String
+  name              String          @unique
   descriprion       String?
   images            String[]
   categoryService   CategoryService @relation(fields: [categoryServiceId], references: [id], onDelete: Cascade)
@@ -598,7 +599,7 @@ model ServiceTranslation {
   id          String   @id @default(uuid())
   language    Language @relation(fields: [lang], references: [language], onDelete: Cascade)
   lang        String
-  name        String
+  name        String   @unique
   description String?
   service     Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
   serviceId   String

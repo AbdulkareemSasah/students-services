@@ -15,12 +15,13 @@ export default function GroupFooterClient({pages, articles,groupFooters}:GroupFo
     const { selectedLang } = useContext(LanguageContext);
 
     return (
+        <div className="flex justify-center items-center container">
                 <Tabs defaultValue={groupFooters.length>0 ? groupFooters[0]?.id : "create"} className="w-full">
-                    <TabsList className={`flex flex-row w-fit  mx-auto`}>
+                    <TabsList className={`container mx-auto`}>
                         {groupFooters.map(nav => (
-                                <TabsTrigger value={nav.id} key={nav.id} className={"px-5"}>{nav?.translations?.find(e => e.lang === selectedLang)?.title}</TabsTrigger>
+                                <TabsTrigger value={nav.id} key={nav.id} >{nav?.translations?.find(e => e.lang === selectedLang)?.title}</TabsTrigger>
                         ))}
-                        <TabsTrigger value="create" className={"px-5"}>Create</TabsTrigger>
+                        <TabsTrigger value="create" >Create</TabsTrigger>
                     </TabsList>
                     {groupFooters.map(group => (
                                 <TabsContent id={group.id} key={group.id}  value={group.id}>
@@ -38,6 +39,7 @@ export default function GroupFooterClient({pages, articles,groupFooters}:GroupFo
                             articles={articles} 
                         />
                     </TabsContent>
-                </Tabs>    
+                </Tabs>   
+                </div> 
     )
 }

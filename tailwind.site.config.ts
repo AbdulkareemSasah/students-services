@@ -5,12 +5,21 @@ module.exports = {
   content: [
         "app/(root)/**/*.{ts,tsx}",
         "components/site/**/*.{ts,tsx}",
+        "components/blocks/**/*.{ts,tsx}",
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {},
   },
   darkMode: "class",
+  safelist: [
+    {
+      pattern: /bg-.+/,
+    },
+    {
+      pattern: /text-.+/,
+    },
+  ],
   plugins: [nextui({
     themes: {
     dark: {

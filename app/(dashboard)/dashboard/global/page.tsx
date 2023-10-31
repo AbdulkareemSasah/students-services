@@ -1,16 +1,5 @@
 import GlobalForm from "./components/global-form";
-import { Button } from "@/components/dashboard/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/dashboard/ui/card";
 import prismadb from "@/lib/prisma";
-import { Input } from "@/components/dashboard/ui/input";
-import { Label } from "@/components/dashboard/ui/label";
 import {
   Tabs,
   TabsContent,
@@ -22,6 +11,7 @@ import DropDownItemClient from "./components/dropdown-item-client";
 import DropDownGroupClient from "./components/dropdown-group-client";
 import GroupFooterClient from "./components/footer-group-client";
 import GetLanguages from "@/actions/get-languages";
+import { SelectLanguage } from "@/components/dashboard/selectLanguage";
 export default async function GlobalPage() {
   const languages = await GetLanguages();
   const navbarItems =
@@ -95,8 +85,13 @@ export default async function GlobalPage() {
   }
 
   return (
-    <div className="space-y-9 container-xl">
-      <Tabs defaultValue="edit">
+    <div className="box-border space-y-9 container-xl">
+      <header className="h-[300px] my-5 flex justify-between">
+        <h1 className="text-5xl">اعدادات الموقع </h1>
+        <SelectLanguage />
+      </header>
+      <div className="my-4">
+      <Tabs defaultValue="global">
         <TabsList className="flex flex-row gap-3">
           <TabsTrigger value="global" className={"p-2"}>
             global
@@ -158,6 +153,7 @@ export default async function GlobalPage() {
           />
         </TabsContent>
       </Tabs>
+      </div>
     </div>
   );
 }

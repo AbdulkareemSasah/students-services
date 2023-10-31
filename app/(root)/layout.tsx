@@ -1,37 +1,31 @@
-"use client";
-import { Metadata } from "next";
-import { siteConfig } from "@/config/site";
-import { Navbar } from "@/components/site/navbar";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { ThemeProviderProps } from "next-themes/dist/types";
-import { Link, NextUIProvider } from "@nextui-org/react";
+import Navbar  from "@/components/site/navbar";
 import "@/styles/site.css";
 import { Providers } from "./providers";
-// export const metadata: Metadata = {
-//   title: {
-//     default: siteConfig.name,
-//     template: `%s - ${siteConfig.name}`,
-//   },
-//   description: siteConfig.description,
-//   themeColor: [
-//     { media: "(prefers-color-scheme: light)", color: "white" },
-//     { media: "(prefers-color-scheme: dark)", color: "black" },
-//   ],
-//   icons: {
-//     icon: "/favicon.ico",
-//     shortcut: "/favicon-16x16.png",
-//     apple: "/apple-touch-icon.png",
-//   },
-// };
+import { Metadata, ResolvingMetadata } from "next";
+
+
+export async function generateMetadata(
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+
+  const global = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/global`).then((res) => res.json())
+  return {
+    title: global.translations[0].name,
+    description:global.translations[0].description,
+    openGraph: {
+      images: [...global.translations[0].images],
+    },
+  }
+}
+
 
 
 
 export default function RootLayout({
-  children,
-  themeProps
+  children
 }: {
   children: React.ReactNode;
-  themeProps?: ThemeProviderProps;
+ 
 }) {
   return (
       <Providers>
@@ -40,17 +34,6 @@ export default function RootLayout({
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">NextUI</p>
-              </Link>
-            </footer>
           </div>
       </Providers>
   

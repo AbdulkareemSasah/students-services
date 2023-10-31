@@ -96,7 +96,14 @@ const DynamicForm: React.FC<DynamicFormProps> = ({field, loading}) => {
                                 {f === "quill js text editor" &&
                                 <>
                                 <QuillEditorJS
-                                        
+                                        name={"editor"+index}
+                                        value={field?.value[index]?.content ? field?.value[index]?.content : ""}
+                                        onChange={newValue => {
+                                            field.value[index] = {
+                                                type : "quill text editor",
+                                                content: newValue
+                                            }
+                                        }}
                                     />
                                 </>
                                     

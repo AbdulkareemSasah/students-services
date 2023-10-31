@@ -7,8 +7,9 @@ export function HeaderPage ({data}: {data:any}) {
     const {t} = useTranslation()
     return <TableHeader
         data={data}
-        title={t("dashboard.services.category.title")}
-        description={t("dashboard.services.category.description")}
-        link={"/dashboard/services/category/create"}
+        title={t("dashboard.comment.title")}
+        description={t("dashboard.comment.description")}
+        link={"/dashboard/comment/category/create"}
+        showAddButton={false}
     />
 }

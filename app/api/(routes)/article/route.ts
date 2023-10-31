@@ -4,19 +4,62 @@ import prismadb from "@/lib/prisma";
 
 export  async  function  GET(req:NextRequest) {
     let query = req.nextUrl.searchParams
-    if(query.get("take") === "all") {
-        const items = await prismadb.article.findMany({
-            include:{
-                translations:true,
-                _count:{
-                    select: {
-                        tags:true,
-                        comments:true,
+    const filter = JSON.parse(`${query.get("filter")}`)
+    
+    if(query.get("take") === "all" && query.get("for") === "short") {
+            const items = await prismadb.article.findMany({
+                where:{
+                    published: true,
+                    ...filter
+                },
+                select:{
+                    category: {
+                        select:{
+                            translations:{
+                                select: {
+                                    name:true,
+                                    lang:true
+                                }
+                            }
+                        }
+                    },
+                    translations:{
+                        select:{
+                            lang:true,
+                            slug:true,
+                            images:true,
+                            title:true,
+                            description:true,
+                            author:{
+                                select:{
+                                    name:true,
+                                    image:true
+                                }
+                            }
+                        }
+                    },
+                    tags:{
+                        where:{
+                            active: true
+                        },
+                        select:{
+                            translations: {
+                                select:{
+                                    lang:true,
+                                    name:true
+                                }
+                            }
+                        }
+                    },
+                    _count:{
+                        select: {
+                            comments:true,
+                        }
                     }
                 }
-            }
-        })
-        if (items) return NextResponse.json(items)
+            })
+            if (items) return NextResponse.json(items)
+        
     }
     if (!query.get("take")) {
         const items = await prismadb.article.findMany({
